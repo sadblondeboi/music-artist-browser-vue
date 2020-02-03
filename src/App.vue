@@ -20,10 +20,14 @@ export default {
 
 <style>
 
-@import url('https://fonts.googleapis.com/css?family=PT+Serif:400,700|Raleway:400,700&display=swap');
-
 html {
   background-color: #000000;
+}
+
+@font-face {
+  font-family: 'PTSerif';
+  src: url('./assets/PTSerif-Regular.ttf');
+
 }
 
 #app {

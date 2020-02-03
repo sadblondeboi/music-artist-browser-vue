@@ -46,6 +46,7 @@ html {
 
 .about-author .author-name {
   font-size: 22px;
+  font-family: PTSerif;
   margin: 0;
 }
 .about-author .album-name {
