@@ -1,7 +1,9 @@
 <template>
     <div class="header">
-        
-        <button class="btn-back"></button>
+    
+        <router-link to="/">
+            <button class="btn-back"></button>
+        </router-link>
         <button class="btn-menu"></button>
         <button class="btn-favourite"></button>
         

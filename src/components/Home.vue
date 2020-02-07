@@ -1,22 +1,33 @@
 <template>
-  <div class="wrapper">
-      <div class="about-author">
-        <h4 class="author-name">{{this.authorName}}</h4>
-        <h2 class="album-name">{{this.albumName}}</h2>
-        <h5 class="description-short">It was originally released in late 1969 under 
-            his birth name, Scott Engel, and failed to 
-            chart. Subsequent reissues have been...</h5>   
-      </div>
+    <section class="damn">
+    <Header/>
+    <div class="wrapper">
+        <div class="about-author">
+          <h4 class="author-name">{{this.authorName}}</h4>
+          <h2 class="album-name">{{this.albumName}}</h2>
+          <h5 class="description-short">It was originally released in late 1969 under 
+              his birth name, Scott Engel, and failed to 
+              chart. Subsequent reissues have been...</h5>   
+        </div>
 
-      <div class="see-more">
-        <h5 class="release-year">{{this.albumReleaseYear}}</h5> 
-        <button class="btn-more">See more</button>
-      </div>
-  </div>
+        <div class="see-more">
+          <h5 class="release-year">{{this.albumReleaseYear}}</h5> 
+          <router-link to="/artist">
+          <button class="btn-more">See more</button>
+          </router-link>
+        </div>
+    </div>
+    </section>
 </template>
 
 <script>
+import Header from './Header.vue';
+
 export default {
+  components: {
+    // Home,
+    Header
+  },
   data() {
     return {
       authorName: "Scott Walker",
@@ -28,11 +39,19 @@ export default {
 }
 </script>
 
-<style>
-html {
+<style scoped>
+section {
     background: url('../assets/img/BG.png') no-repeat;
     background-position: -40px -140px;
     background-attachment: fixed;
+}
+</style>
+
+<style>
+section {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 4vh;
 }
 
 .wrapper {
@@ -71,5 +90,5 @@ html {
   width: 100px;
   color: white;
 }
-
 </style>
+
