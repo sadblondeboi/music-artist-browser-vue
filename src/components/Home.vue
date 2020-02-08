@@ -12,7 +12,7 @@
 
         <div class="see-more">
           <h5 class="release-year">{{this.albumReleaseYear}}</h5> 
-          <router-link to="/artist">
+          <router-link to="/artist/">
           <button class="btn-more">See more</button>
           </router-link>
         </div>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     
-    <transition name="slide" mode="out-in">
+    <transition :name="transitionName" mode="out-in">
       <router-view> </router-view>
     </transition>
     <!-- <Home /> -->
@@ -20,8 +20,15 @@ export default {
   },
   data () {
     return {
-
+      transitionName: 'slide'
     }
+  },
+  beforeRouteUpdate (to, from, next) {
+    console.log('chuj');
+    const toDepth = to.path.split('/').length
+    const fromDepth = from.path.split('/').length
+    this.transitionName = toDepth < fromDepth ? 'slide' : 'slide2'
+    next()
   }
 }
 </script>
@@ -44,6 +51,7 @@ export default {
   
   color: white;
   min-height: 100vh;
+  position: absolute;
 }
 
 body {
@@ -51,24 +59,23 @@ body {
 }
 
 html {
-  background-color: black;
+  background-color: grey;
 }
 
 @keyframes slide{
   from {
-    margin-top: 100%;
+    margin-bottom: 230%;
   }
   to {
-    margin-top: 0%;
-  }
-}
-
-@keyframes slide-leave {
-  from {
     margin-bottom: 0%;
   }
+}
+@keyframes slide-leave{
+  from {
+    margin-top: 0%;
+  }
   to {
-    margin-bottom: 100%;
+    margin-top: -230%;
   }
 }
 
@@ -76,16 +83,36 @@ html {
 
 }
 .slide-leave {
-  /* sprawdz w ktorych momentach animacji co sie wykonuje, mysle ze w tym caly haczyk  */
+  /* slide dla jednego komponentu, dla drugiego należy zrobić podobną akcję, ale lekko zmienić
+  aby ODWRÓCIĆ to, ponieważ nie loopujemy przez komponenty, tylko chcemy wrócić z jednego do drugiego
+  w logiczny sposób:)), powodzenia  */
 }
 
 .slide-leave-active {
-  animation-duration: .5s;
+  animation-duration: 1s;
   animation-name: slide-leave;
 }
 
 .slide-enter-active {
-  animation-duration: .5s;
+  animation-duration: 1s;
   animation-name: slide;
 }
+
+@keyframes slide2{
+  from {
+    margin-bottom: 230%;
+  }
+  to {
+    margin-bottom: 0%;
+  }
+}
+@keyframes slide2-leave{
+  from {
+    margin-top: 230%;
+  }
+  to {
+    margin-top: -230%;
+  }
+}
+
 </style>
