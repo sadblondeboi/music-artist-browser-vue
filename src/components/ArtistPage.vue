@@ -1,6 +1,6 @@
 <template>
   <section>
-      <Header/>  
+      <Header @transition-name="transitionNameEvent"/>  
       <h1> chuj </h1>
   </section>
 </template>
@@ -11,12 +11,10 @@ export default {
   components: {
     Header
   },
-  beforeRouteUpdate (to, from, next) {
-    console.log('chuj');
-    const toDepth = to.path.split('/').length
-    const fromDepth = from.path.split('/').length
-    this.transitionName = toDepth < fromDepth ? 'slide' : 'slide2'
-    next()
+  methods: {
+      transitionNameEvent(event) {
+          this.$emit("transition-name", event);
+      }
   }
 }
 </script>

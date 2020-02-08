@@ -2,7 +2,7 @@
   <div id="app">
     
     <transition :name="transitionName" mode="out-in">
-      <router-view> </router-view>
+      <router-view @transition-name="transitionNameEvent"> </router-view>
     </transition>
     <!-- <Home /> -->
   </div>
@@ -20,15 +20,13 @@ export default {
   },
   data () {
     return {
-      transitionName: 'slide'
+      transitionName: 'slide-up'
     }
   },
-  beforeRouteUpdate (to, from, next) {
-    console.log('chuj');
-    const toDepth = to.path.split('/').length
-    const fromDepth = from.path.split('/').length
-    this.transitionName = toDepth < fromDepth ? 'slide' : 'slide2'
-    next()
+  methods: {
+      transitionNameEvent(event) {
+          this.transitionName = event;
+      }
   }
 }
 </script>
@@ -61,58 +59,47 @@ body {
 html {
   background-color: grey;
 }
-
-@keyframes slide{
-  from {
-    margin-bottom: 230%;
-  }
-  to {
-    margin-bottom: 0%;
-  }
-}
-@keyframes slide-leave{
-  from {
-    margin-top: 0%;
-  }
-  to {
-    margin-top: -230%;
-  }
+/* SLIDE UP */
+.slide-up-enter {
+    transform: translateY(100%);
 }
 
-.slide-enter {
-
-}
-.slide-leave {
-  /* slide dla jednego komponentu, dla drugiego należy zrobić podobną akcję, ale lekko zmienić
-  aby ODWRÓCIĆ to, ponieważ nie loopujemy przez komponenty, tylko chcemy wrócić z jednego do drugiego
-  w logiczny sposób:)), powodzenia  */
+.slide-up-enter-to, .slide-up-leave {
+    transform: translateY(0%);
 }
 
-.slide-leave-active {
-  animation-duration: 1s;
-  animation-name: slide-leave;
+.slide-up-leave-to {
+    transform: translateY(-100%);
 }
 
-.slide-enter-active {
-  animation-duration: 1s;
-  animation-name: slide;
+.slide-up-leave-active {
+  transition: all 1s ease;
 }
 
-@keyframes slide2{
-  from {
-    margin-bottom: 230%;
-  }
-  to {
-    margin-bottom: 0%;
-  }
+.slide-up-enter-active {
+  transition: all 1s ease;
 }
-@keyframes slide2-leave{
-  from {
-    margin-top: 230%;
-  }
-  to {
-    margin-top: -230%;
-  }
+/* SLIDE DOWN */
+.slide-down-enter {
+    transform: translateY(-100%);
 }
+
+.slide-down-enter-to, .slide-down-leave {
+    transform: translateY(0%);
+}
+
+.slide-down-leave-to {
+    transform: translateY(100%);
+}
+
+.slide-down-leave-active {
+  transition: all 1s ease;
+}
+
+.slide-down-enter-active {
+  transition: all 1s ease;
+}
+
+
 
 </style>
