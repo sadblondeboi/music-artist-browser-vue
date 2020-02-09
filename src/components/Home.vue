@@ -15,7 +15,7 @@
 			<div class="see-more">
 				<h5 class="release-year">{{this.albumReleaseYear}}</h5>
 				<router-link to="/artist/">
-					<button class="btn-more" @click="$emit('transition-name', 'slide-up')">See more</button>
+					<button class="btn-more">See more</button>
 				</router-link>
 			</div>
 		</div>
@@ -53,7 +53,7 @@ section {
 section {
 	width: 100%;
 	min-height: 100vh;
-	padding-top: 4vh;
+
 }
 
 .wrapper {

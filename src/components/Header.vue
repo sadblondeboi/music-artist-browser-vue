@@ -1,7 +1,7 @@
 <template>
 	<div class="header">
 		<router-link to="/">
-			<button class="btn-back" @click="$emit('transition-name', 'slide-down')"></button>
+			<button class="btn-back"></button>
 		</router-link>
 		<button class="btn-menu"></button>
 		<button class="btn-favourite"></button>
@@ -23,6 +23,10 @@ export default {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
+	margin-bottom: 2vh;
+	margin-left: 2vw;
+    margin-right: 2vw;
+	padding-top: 4vh;
 }
 
 button {

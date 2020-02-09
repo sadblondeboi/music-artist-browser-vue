@@ -1,20 +1,27 @@
 <template>
   <section>
-      <Header @transition-name="transitionNameEvent"/>  
-      <h1> chuj </h1>
+      <Header/>  
+      <Header2/>
   </section>
 </template>
 
 <script>
 import Header from './Header.vue';
+import Header2 from './Header2.vue';
+
+import Artists from '../models/Artists';
 export default {
+  props: {
+    artists: {
+      type: Artists,
+      required: true
+    }
+  },
   components: {
-    Header
+    Header,
+    Header2
   },
   methods: {
-      transitionNameEvent(event) {
-          this.$emit("transition-name", event);
-      }
   }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     
-    <transition :name="transitionName" mode="out-in">
-      <router-view @transition-name="transitionNameEvent"> </router-view>
+    <transition name="router-anim">
+      <router-view> </router-view>
     </transition>
     <!-- <Home /> -->
   </div>
@@ -20,7 +20,6 @@ export default {
   },
   data () {
     return {
-      transitionName: 'slide-up'
     }
   },
   methods: {
@@ -50,54 +49,45 @@ export default {
   color: white;
   min-height: 100vh;
   position: absolute;
+
 }
 
 body {
   margin: unset;
+  height: 100%;
+  overflow: hidden;
 }
 
 html {
-  background-color: grey;
+  background-color: black;
 }
 /* SLIDE UP */
-.slide-up-enter {
-    transform: translateY(100%);
+.router-anim-enter-active{
+  animation: up 1s;
+  transition: all ease;
 }
 
-.slide-up-enter-to, .slide-up-leave {
-    transform: translateY(0%);
+.router-anim-leave-active{
+  animation: down 1s;
+  transition: all ease;
 }
 
-.slide-up-leave-to {
-    transform: translateY(-100%);
+@keyframes down {
+  from {
+    margin-top: 0;
+  }
+  to{
+    margin-top: -100vh;
+  }
 }
 
-.slide-up-leave-active {
-  transition: all 1s ease;
-}
-
-.slide-up-enter-active {
-  transition: all 1s ease;
-}
-/* SLIDE DOWN */
-.slide-down-enter {
-    transform: translateY(-100%);
-}
-
-.slide-down-enter-to, .slide-down-leave {
-    transform: translateY(0%);
-}
-
-.slide-down-leave-to {
-    transform: translateY(100%);
-}
-
-.slide-down-leave-active {
-  transition: all 1s ease;
-}
-
-.slide-down-enter-active {
-  transition: all 1s ease;
+@keyframes up {
+  from {
+    margin-bottom: 100vh;
+  }
+  to{
+    margin-bottom: 0;
+  }
 }
 
 
