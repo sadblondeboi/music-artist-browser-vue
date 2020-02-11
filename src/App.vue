@@ -46,16 +46,19 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   
-  color: white;
   min-height: 100vh;
+  min-width: 100vw;
+
   position: absolute;
+  color: white;
 
 }
 
 body {
   margin: unset;
-  height: 100%;
   overflow: hidden;
+  height: 100vh;
+
 }
 
 html {

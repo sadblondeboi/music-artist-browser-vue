@@ -24,11 +24,10 @@
 
 <script>
 import Header from "./Header.vue";
-
 export default {
 	components: {
 		// Home,
-		Header
+		Header,
 	},
 	data() {
 		return {
@@ -46,20 +45,20 @@ section {
 	background: url("../assets/img/BG.png") no-repeat;
 	background-position: -40px -140px;
 	background-attachment: fixed;
+	
 }
 </style>
 
-<style>
+<style scoped>
 section {
-	width: 100%;
+	width: 100vw;
 	min-height: 100vh;
-
 }
 
 .wrapper {
-	margin-top: 110%;
-	margin-left: 5%;
-	margin-right: 5%;
+	margin-top: 50vh;
+	margin-left: 4vw;
+	margin-right: 4vw;
 	display: grid;
 	grid-template-rows: 2;
 	justify-items: start;
