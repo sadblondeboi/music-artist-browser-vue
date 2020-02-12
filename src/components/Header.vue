@@ -1,8 +1,6 @@
 <template>
 	<div class="header">
-		<router-link to="/">
-			<button class="btn-back"></button>
-		</router-link>
+		<button class="btn-back" @click="goBack"></button>
 		<button class="btn-menu"></button>
 		<button class="btn-favourite"></button>
 
@@ -14,11 +12,16 @@
 
 <script>
 export default {
-	name: "Header"
+	name: "Header",
+	methods: {
+	goBack() {
+		window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
+    }	
+  }
 };
 </script>
 
-<style>
+<style scoped>
 .header {
 	display: flex;
 	flex-direction: row;

@@ -56,8 +56,7 @@ export default {
 
 body {
   margin: unset;
-  overflow: hidden;
-  height: 100vh;
+
 
 }
 

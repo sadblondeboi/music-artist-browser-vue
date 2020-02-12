@@ -1,16 +1,18 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './App.vue';
-import Home from './components/Home.vue';
-import ArtistPage from './components/ArtistPage.vue';
+import Home from './views/Home.vue';
+import Homepage from './views/Homepage.vue'
+import ArtistPage from './views/ArtistPage.vue';
 
 Vue.config.productionTip = false;
 
 Vue.use(VueRouter);
 
 const routes = [
+  { path: '/Home/', component: Homepage },
   { path: '/', component: Home },
-  { path: '/Artist/', component: ArtistPage }
+  { path: '/Artists/:link', component: ArtistPage }
 ];
 
 const router = new VueRouter({

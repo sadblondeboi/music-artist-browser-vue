@@ -2,21 +2,22 @@
   <div class="header2">
       <button class="btn-about">About</button>
       <button class="btn-lyrics">Lyrics</button>
-      <button class="btn-artist">{{this.lmao}}</button>
+      <button class="btn-artist">{{this.sw.name}}</button>
   </div>
 </template>
 
 <script>
 import Artists from '../models/Artists.js';
-const artists = new Artists();
+const object = new Artists();
 
 export default {
     name: "Header2",
     data () {
         return {
-            lmao: artists.artistName
+            sw: object.artists[0]
         }
     },
+    
 }
 </script>
 
