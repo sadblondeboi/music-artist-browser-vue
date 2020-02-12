@@ -2,6 +2,7 @@ export default class Artists {
     
     artists = [
         {
+            id: 0,
             name: "Scott Walker",
             link: "scott-walker",
             imgLink: "../assets/img/BG.png",
@@ -10,6 +11,7 @@ export default class Artists {
             longDescription2: "Scott 4 was the first Walker album to consist solely of self-penned songs—Scott, Scott 2 and Scott 3 had each featured translations of Jacques Brel songs, which were later compiled to form the album Scott Walker Sings Jacques Brel, , which were later compiled to form the album Scott Walker Sings Jacques Brel, and the earlier albums had also featured some songs from other sources."}]
         },
         {
+            id: 1,
             name: "Marek Grechuta",
             link: 'marek-grechuta',
             imgLink: "../assets/img/grechuta.jpg",

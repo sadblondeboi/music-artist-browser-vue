@@ -7,23 +7,19 @@
   </div>
   <div class="artist-list">
 	<ArtistTile
-		v-for="artist in artists"
-		v-bind:key = "artist.id"
-	
+		v-for="(artist, i) in artists"
+		:key="i"
+		:artist = "artist"
 	/>
 	
-  </div>
-        <!-- <GameTile  v-on:tile-captured="winChecker" class="tile" v-for="(tile, i) in tiles" :key="i" :tileData="tile"/>  -->
-   
+  </div>  
   </section>
 </template>
 
 <script>
 import Header3 from '../components/Header3.vue'
 import ArtistTile from '../components/ArtistTile.vue'
-import Artists from '../models/Artists.js';
-const object = new Artists();
-
+import ArtistsDB from '../models/Artists.json';
 
 export default {
 	components: {
@@ -32,7 +28,7 @@ export default {
 	},
 	data () {
 		return {
-			artists: object
+			artists: ArtistsDB
 		}
 	}
 }

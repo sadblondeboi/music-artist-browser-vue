@@ -1,28 +1,25 @@
 <template>
-    <div class="main">
-        hej
-    </div>
+  <div class="main">{{artist.name}}</div>
 </template>
 
 <script>
-import Artists from '../models/Artists.js';
-const object = new Artists();
+
+
+
 
 export default {
-    data () {
+  data () {
     return {
-      sw: object.artists[0],
-      link: object.artists[0].link
+
     }
+  },
+  props: {
+    artist: Object
   },
 }
 </script>
 
 <style scoped>
 
-.main {
-    height: 20vh;
-    width: 100vw;
-}
 
 </style>
