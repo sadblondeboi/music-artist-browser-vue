@@ -19,7 +19,8 @@
 <script>
 import Header3 from '../components/Header3.vue'
 import ArtistTile from '../components/ArtistTile.vue'
-import ArtistsDB from '../models/Artists.json';
+
+const db = require("@/models/Artists.json");
 
 export default {
 	components: {
@@ -28,13 +29,18 @@ export default {
 	},
 	data () {
 		return {
-			artists: ArtistsDB
+			artists: db
 		}
 	}
 }
 </script>
 
 <style scoped>
+
+:root {
+	--imgLink: 
+}
+
 .wrapper {
 	margin-top: 4vh;
     margin-left: 6vw;
@@ -43,6 +49,16 @@ export default {
 	grid-template-rows: 2;
 	justify-items: start;
 }
+
+section {
+	height: 100vh;
+	width: 100vw;
+}
+
+.artist-list {
+
+}
+
 
 h2 {
 	font-size: 36px;

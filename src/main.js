@@ -12,7 +12,7 @@ Vue.use(VueRouter);
 const routes = [
   { path: '/Home/', component: Homepage },
   { path: '/', component: Home },
-  { path: '/Artists/:link', component: ArtistPage }
+  { path: '/Artist/', component: ArtistPage }
 ];
 
 const router = new VueRouter({

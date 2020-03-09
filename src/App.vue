@@ -56,13 +56,10 @@ export default {
 
 body {
   margin: unset;
-
-
-}
-
-html {
   background-color: black;
+
 }
+
 /* SLIDE UP */
 .router-anim-enter-active{
   animation: up 1s;

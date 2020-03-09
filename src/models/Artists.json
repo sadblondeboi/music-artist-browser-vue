@@ -2,7 +2,7 @@
     {
         "name": "Scott Walker",
         "link": "scott-walker",
-        "imgLink": "link(../assets/img/BG.png)",
+        "imgLink": "C:/Users/bezaw/Projects/music-app/src/assets/img/grechuta.jpg",
         "albums": [
             { "albumName": "Scott 3", "albumReleaseYear": 1969, "tracks": [
                     "The Seventh Seal",
@@ -23,7 +23,7 @@
     {
         "name": "Marek Grechuta",
         "link": "marek-grechuta",
-        "imgLink": "../assets/img/grechuta.jpg",
+        "imgLink": "C:/Users/bezaw/Projects/music-app/src/assets/img/grechuta.jpg",
         "albums": [
             { "albumName": "Korowód", "albumReleaseYear": 1971, "tracks": [
                     "Widzieć więcej",
@@ -40,9 +40,5 @@
                 "longDescription": "Marek Grechuta began studying piano at the age of seven and continued for the next ten years. He moved to Kraków to begin architectural studies, where he settled for the rest of his life. In December 1966, Grechuta founded the band Anawa with pianist and composer Jan Kanty-Pawluśkiewicz. The group delivered poetic lyrics within complex arrangements which applied classical instruments towards pop song lyrics."
             }
         ]
-    },
-    {
-        "name": "Twoja stara",
-        "link": "twoja-stara"
     }
 ]
