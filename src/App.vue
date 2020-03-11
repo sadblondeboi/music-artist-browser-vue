@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    
-    <transition name="router-anim">
+    <transition name="router-anim" >
       <router-view> </router-view>
     </transition>
     <!-- <Home /> -->
@@ -11,20 +10,26 @@
 <script>
 // import Home from './components/Home.vue';
 // import Header from './components/Header.vue';
+// import Sidebar from '@/components/Sidebar.vue'
 
 export default {
   name: 'app',
   components: {
+    // Sidebar,
     // Home,
     // Header
   },
   data () {
     return {
+      showSidebar: false,
     }
   },
   methods: {
       transitionNameEvent(event) {
           this.transitionName = event;
+      },
+      showNav() {
+        this.showSidebar = !this.showSidebar;
       }
   }
 }
@@ -60,6 +65,24 @@ body {
 
 }
 
+/* menu  */
+
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0px;
+    padding: none;
+    min-height: 100vh;
+    background-color: black;
+    z-index: 999;
+    transition: all .5s ease-in-out;
+    
+}
+
+.show {
+  width: 100vw;
+}
 /* SLIDE UP */
 .router-anim-enter-active{
   animation: up 1s;

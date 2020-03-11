@@ -20,16 +20,26 @@
 import Header3 from '../components/Header3.vue'
 import ArtistTile from '../components/ArtistTile.vue'
 
+
 const db = require("@/models/Artists.json");
 
 export default {
 	components: {
 		Header3,
-		ArtistTile
+		ArtistTile,
+
 	},
 	data () {
 		return {
 			artists: db
+		}
+	},
+	methods: {
+		toggleMenu () {
+			this.$emit('toggle-menu')
+		},
+		test () {
+			this.toggleMenu();
 		}
 	}
 }
