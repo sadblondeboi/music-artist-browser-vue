@@ -1,11 +1,11 @@
 <template>
   <div class="workpls">
-  
+  <router-link to="/"> kurwaaa</router-link>
   <section>
     <div class="vinyl-box">
       <img class="vinyl-img" src="../assets/vinyl1x.png">
     </div>
-    <Header/>  
+    <Header @sidebar-change="$emit('sidebar-change', $event)"/>  
     <Header2/>
     <div class="wrapper">
         <h2 class="albumName">{{this.sw.albums[0].albumName}}</h2>

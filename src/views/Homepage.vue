@@ -1,33 +1,35 @@
 <template>
-  <section>
-  <header3/>
-  <div class="wrapper">
-    <h2>Explore</h2>
+<section>
+	<div class="header">
+		<MenuButton/> 
+	</div>	
+	<Sidebar/> 
+<div class="wrapper">
+	<h2>Explore</h2>
 	<h4>tu będzie header ale mi sie go nie chce robic jeszcze</h4>
-  </div>
-  <div class="artist-list">
+</div>
+<div class="artist-list">
 	<ArtistTile
 		v-for="(artist, i) in artists"
 		:key="i"
 		:artist = "artist"
 	/>
-	
-  </div>  
-  </section>
+</div>  
+</section>
 </template>
 
 <script>
-import Header3 from '../components/Header3.vue'
 import ArtistTile from '../components/ArtistTile.vue'
-
+import MenuButton from "@/components/buttons/MenuButton.vue"
+import Sidebar from "@/components/Sidebar.vue"
 
 const db = require("@/models/Artists.json");
 
 export default {
 	components: {
-		Header3,
 		ArtistTile,
-
+		MenuButton,
+		Sidebar
 	},
 	data () {
 		return {
@@ -47,10 +49,6 @@ export default {
 
 <style scoped>
 
-:root {
-	--imgLink: 
-}
-
 .wrapper {
 	margin-top: 4vh;
     margin-left: 6vw;
@@ -65,8 +63,11 @@ section {
 	width: 100vw;
 }
 
-.artist-list {
-
+.header {
+	margin-bottom: 2vh;
+	margin-left: 2vw;
+    margin-right: 2vw;
+	padding-top: 4vh;
 }
 
 

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <transition name="router-anim" >
-      <router-view> </router-view>
+    <transition :name="this.transitionName" >
+      <router-view @sidebar-change="showSidebar = $event;"> </router-view>
     </transition>
     <!-- <Home /> -->
   </div>
@@ -11,6 +11,7 @@
 // import Home from './components/Home.vue';
 // import Header from './components/Header.vue';
 // import Sidebar from '@/components/Sidebar.vue'
+import { mutations } from '@/store.js'
 
 export default {
   name: 'app',
@@ -28,11 +29,15 @@ export default {
       transitionNameEvent(event) {
           this.transitionName = event;
       },
-      showNav() {
-        this.showSidebar = !this.showSidebar;
-      }
+      closeSidebarPanel: mutations.toggleNav
+  },
+  computed: {
+    transitionName() {
+      return this.showSidebar ? "sidebar-anim" : "router-anim";
+    },
   }
 }
+
 </script>
 
 <style>
@@ -112,6 +117,35 @@ body {
   }
 }
 
+/* sidebar animations */
+/* być może należy zmienić kierunki animacji na przeciwne, ale nie jestem pewien bo nie działa */
+.sidebar-anim-enter-active{
+    animation: right .5s;
+    transition: all ease;
+}
 
+.sidebar-anim-leave-active{
+    animation: left .5s;
+    transition: all ease;
+}
+
+
+@keyframes right {
+    from {
+        margin-left: -100vw;
+    }
+    to {
+        margin-right: 0;
+    }
+}
+
+@keyframes left {
+    from {
+    margin-right: 0;
+  }
+  to{
+    margin-left: -100vw;
+  }
+}
 
 </style>

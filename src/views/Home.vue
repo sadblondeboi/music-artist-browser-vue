@@ -1,6 +1,6 @@
 <template>
 	<section class="damn">
-		<Header />
+		<Header  @sidebar-change="$emit('sidebar-change', $event)"/>
 		<div class="wrapper">
 			<div class="about-author">
 				<h4 class="author-name">{{this.authorName}}</h4>

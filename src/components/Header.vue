@@ -1,12 +1,6 @@
 <template>
 	<div>
-		<Sidebar>
-			<ul class="sidebar-panel-nav">
-				<li><a href="/">Homepage</a></li>
-				<li><a href="/artist">Artist</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
-		</Sidebar>
+		<Sidebar @sidebar-change="$emit('sidebar-change', $event)"/>
 		<div class="header">
 			<BackButton/>
 			<MenuButton/>
