@@ -1,6 +1,5 @@
 <template>
   <div class="workpls">
-  <router-link to="/"> kurwaaa</router-link>
   <section>
     <div class="vinyl-box">
       <img class="vinyl-img" src="../assets/vinyl1x.png">

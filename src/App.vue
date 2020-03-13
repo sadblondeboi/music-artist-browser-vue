@@ -1,24 +1,22 @@
 <template>
   <div id="app">
-    <transition :name="this.transitionName" >
-      <router-view @sidebar-change="showSidebar = $event;"> </router-view>
+          <Sidebar @sidebar-change="setShowSidebar($event)"> 
+          </Sidebar>
+    <transition :name="this.transitionName"
+                @enter="this.closeSidebarPanel">    
+      <router-view> </router-view>
     </transition>
-    <!-- <Home /> -->
   </div>
 </template>
 
 <script>
-// import Home from './components/Home.vue';
-// import Header from './components/Header.vue';
-// import Sidebar from '@/components/Sidebar.vue'
-import { mutations } from '@/store.js'
+import Sidebar from '@/components/Sidebar.vue'
+import { store, mutations } from '@/store.js'
 
 export default {
   name: 'app',
   components: {
-    // Sidebar,
-    // Home,
-    // Header
+    Sidebar,
   },
   data () {
     return {
@@ -26,18 +24,25 @@ export default {
     }
   },
   methods: {
-      transitionNameEvent(event) {
-          this.transitionName = event;
-      },
-      closeSidebarPanel: mutations.toggleNav
+    setShowSidebar(event) {
+      this.showSidebar = event;
+    },
+    onEnterCloseSidebar() {
+      if (this.showSidebar == true){
+        this.showSidebar = false;
+      }
+    },   
+    closeSidebarPanel: mutations.toggleNav,
   },
   computed: {
     transitionName() {
       return this.showSidebar ? "sidebar-anim" : "router-anim";
     },
+    isPanelOpen() {
+      return store.isNavOpen;
+    },
   }
 }
-
 </script>
 
 <style>
@@ -118,7 +123,8 @@ body {
 }
 
 /* sidebar animations */
-/* być może należy zmienić kierunki animacji na przeciwne, ale nie jestem pewien bo nie działa */
+/* tutaj jest do zmiany na enter/leave-active, ale ze względu na to że nie chcę marnować więcej czasu jest niedopracowane. View, do którego przechodzimy,
+nie wchodzi jednocześnie z wychodzeniem sidebara */
 .sidebar-anim-enter-active{
     animation: right .5s;
     transition: all ease;

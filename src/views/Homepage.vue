@@ -3,7 +3,6 @@
 	<div class="header">
 		<MenuButton/> 
 	</div>	
-	<Sidebar/> 
 <div class="wrapper">
 	<h2>Explore</h2>
 	<h4>tu będzie header ale mi sie go nie chce robic jeszcze</h4>
@@ -21,7 +20,6 @@
 <script>
 import ArtistTile from '../components/ArtistTile.vue'
 import MenuButton from "@/components/buttons/MenuButton.vue"
-import Sidebar from "@/components/Sidebar.vue"
 
 const db = require("@/models/Artists.json");
 
@@ -29,7 +27,6 @@ export default {
 	components: {
 		ArtistTile,
 		MenuButton,
-		Sidebar
 	},
 	data () {
 		return {

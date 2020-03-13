@@ -4,20 +4,19 @@
     <transition name="slide">
       <div v-if="isPanelOpen" class="sidebar-panel">
         <div class="inside-header">
-          <button @click="closeSidebarPanel"></button>
+          <button class ="closeButton" @click="toggleSidebarPanel"></button>
         </div>
         <ul class="sidebar-panel-nav">
           <li>
-            <a href="/Home">actual homepage</a>
+            <button class="nav-button" @click="routerChange('/Home/')">Home</button>
           </li>
           <li>
-            <a href="/">Artist</a>
+            <button class="nav-button" @click="routerChange('/')">Album</button>
           </li>
           <li>
-            <a href="/artist">Artist in depth</a>
+            <button class="nav-button" @click="routerChange('/Artist')">Artist</button>
           </li>
         </ul>
-        <button @click="routerChange('/')">Go to Foo</button>
       </div>
     </transition>
   </div>
@@ -28,9 +27,8 @@ import { store, mutations } from "@/store.js";
 
 export default {
   methods: {
-    closeSidebarPanel: mutations.toggleNav,
+    toggleSidebarPanel: mutations.toggleNav,
     routerChange(path) {
-      this.closeSidebarPanel();
       this.$router.push(path);
     }
   },
@@ -101,19 +99,23 @@ ul.sidebar-panel-nav {
   list-style-type: none;
 }
 
-ul.sidebar-panel-nav > li > a {
+button {
+  cursor: pointer;
+  border: none;
+  padding: 20px 20px;
+}
+
+.closeButton {
+  background: url(../assets/close.svg) no-repeat;
+  background-position: center center;
+}
+
+.nav-button {
   color: #fff;
   text-decoration: none;
   font-size: 1.5rem;
   display: block;
   padding-bottom: 0.5em;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  padding: 20px 20px;
-  background: url(../assets/close.svg) no-repeat;
-  background-position: center center;
+  background: none;
 }
 </style>

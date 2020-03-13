@@ -1,14 +1,10 @@
 <template>
 	<div>
-		<Sidebar @sidebar-change="$emit('sidebar-change', $event)"/>
+		
 		<div class="header">
 			<BackButton/>
 			<MenuButton/>
 			<button class="btn-favourite"></button>
-
-			<!-- <input type="image" alt="fu" src="../assets/img/back_button.png"/>
-			<input type="image" alt="fu1" src="../assets/img/menu_button.png"/>
-			<input type="image" alt="fu2" src="../assets/img/favourite_button.png"/>-->
 		</div>
 	</div>
 </template>
@@ -16,13 +12,11 @@
 <script>
 import MenuButton from "@/components/buttons/MenuButton.vue"
 import BackButton from "@/components/buttons/BackButton.vue"
-import Sidebar from "@/components/Sidebar.vue"
 
 export default {
 	name: "Header",
 	components: {
 		MenuButton,
-		Sidebar,
 		BackButton
 	},
 	methods: {
