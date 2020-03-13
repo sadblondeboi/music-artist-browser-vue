@@ -6,17 +6,16 @@
         <div class="inside-header">
           <button class ="closeButton" @click="toggleSidebarPanel"></button>
         </div>
-        <ul class="sidebar-panel-nav">
-          <li>
-            <button class="nav-button" @click="routerChange('/Home/')">Home</button>
-          </li>
-          <li>
+        <div class="sidebar-panel-nav">
+            <div class="home-button">
+            <button class="nav-button" :class="{active: isActive}" @click="routerChange('/Home/')">Home</button>
+            </div>
+
             <button class="nav-button" @click="routerChange('/')">Album</button>
-          </li>
-          <li>
+
             <button class="nav-button" @click="routerChange('/Artist')">Artist</button>
-          </li>
-        </ul>
+
+        </div>
       </div>
     </transition>
   </div>
@@ -26,10 +25,24 @@
 import { store, mutations } from "@/store.js";
 
 export default {
+  data() {
+    return {
+      isActive: true,
+    }
+  },
   methods: {
     toggleSidebarPanel: mutations.toggleNav,
-    routerChange(path) {
-      this.$router.push(path);
+    routerChange(newPath) {
+      if(this.$route.path == newPath)
+        console.log('you are already there');
+      else
+        this.$router.push(newPath);
+    },
+    setActive() {
+      if(this.$route.path == '/Home/')
+        this.isActive = true;
+      else 
+        this.isActive = false;
     }
   },
   computed: {
@@ -41,6 +54,9 @@ export default {
     isPanelOpen(state) {
       this.$emit("sidebar-change", state);
     }
+  },
+  updated () {
+    this.setActive()
   }
 };
 </script>
@@ -85,6 +101,7 @@ export default {
   height: 100vh;
   z-index: 999;
   width: 100vw;
+  list-style-type: none;
 }
 
 .inside-header {
@@ -94,15 +111,17 @@ export default {
   padding-top: 4vh;
 }
 
-/* test styling */
-ul.sidebar-panel-nav {
-  list-style-type: none;
+.sidebar-panel-nav {
+  padding-left: 2vw;
 }
 
 button {
-  cursor: pointer;
   border: none;
   padding: 20px 20px;
+}
+
+.nav-button {
+  padding: 20px 40px;
 }
 
 .closeButton {
@@ -117,5 +136,14 @@ button {
   display: block;
   padding-bottom: 0.5em;
   background: none;
+}
+
+.home-button {
+  background: url(../assets/home-icon.svg) no-repeat;
+  background-position: -1vh -1vw;
+}
+
+.active {
+  /* border: 1px solid white; */
 }
 </style>

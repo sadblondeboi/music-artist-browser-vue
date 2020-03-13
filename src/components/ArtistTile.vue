@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="main" :id="artist.name" :style="styleBinding" >{{artist.name}}</div>
+    <div class="main" @click="routerChange('/Artist')" :id="artist.name" :style="styleBinding" >{{artist.name}} </div>
   </div>
 </template>
 
@@ -17,6 +17,11 @@ export default {
   },
   props: {
     artist: Object
+  },
+  methods: {
+    routerChange(path) {
+      this.$router.push(path);
+    }
   },
   computed: {
     styleBinding() {
@@ -35,6 +40,6 @@ export default {
 <style scoped>
 .main {
   padding: 16vw;
-
+  font-size: 20px;
 }
 </style>

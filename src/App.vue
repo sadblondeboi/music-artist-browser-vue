@@ -3,7 +3,7 @@
           <Sidebar @sidebar-change="setShowSidebar($event)"> 
           </Sidebar>
     <transition :name="this.transitionName"
-                @enter="this.closeSidebarPanel">    
+                @enter="closeSidebar">    
       <router-view> </router-view>
     </transition>
   </div>
@@ -27,12 +27,8 @@ export default {
     setShowSidebar(event) {
       this.showSidebar = event;
     },
-    onEnterCloseSidebar() {
-      if (this.showSidebar == true){
-        this.showSidebar = false;
-      }
-    },   
-    closeSidebarPanel: mutations.toggleNav,
+    closeSidebar: mutations.closeNav, 
+    toggleSidebarPanel: mutations.toggleNav,
   },
   computed: {
     transitionName() {
@@ -147,7 +143,7 @@ nie wchodzi jednocześnie z wychodzeniem sidebara */
 
 @keyframes left {
     from {
-    margin-right: 0;
+    margin-right: -100vw;
   }
   to{
     margin-left: -100vw;
