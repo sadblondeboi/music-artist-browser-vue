@@ -125,12 +125,12 @@ body {
 /* sidebar animations */
 /* tutaj jest do zmiany na enter/leave-active, ale ze względu na to że nie chcę marnować więcej czasu jest niedopracowane. View, do którego przechodzimy,
 nie wchodzi jednocześnie z wychodzeniem sidebara */
-.sidebar-anim-enter-active{
+.sidebar-anim-enter{
     animation: right .5s;
     transition: all ease;
 }
 
-.sidebar-anim-leave-active{
+.sidebar-anim-leave{
     animation: left .5s;
     transition: all ease;
 }
