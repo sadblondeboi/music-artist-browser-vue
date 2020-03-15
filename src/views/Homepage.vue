@@ -1,5 +1,6 @@
 <template>
 <section>
+	
 	<div class="header">
 		<MenuButton/> 
 	</div>	
@@ -8,6 +9,7 @@
 	</div>
 	<SearchBar/>
 	<ArtistList/>
+
 </section>
 </template>
 
@@ -40,6 +42,11 @@ export default {
 
 <style scoped>
 
+section {
+	height: 100vh;
+    width: 100vw;
+}
+
 .wrapper {
     margin-left: 6vw;
 	margin-right: 6vw;
@@ -47,15 +54,10 @@ export default {
 	grid-template-rows: 2;
 	justify-items: start;
 	justify-content: left;
-}
-
-section {
-	height: 100vh;
-	width: 100vw;
+	
 }
 
 .header {
-
 	margin-left: 2vw;
     margin-right: 2vw;
 	padding-top: 4vh;

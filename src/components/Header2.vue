@@ -2,22 +2,24 @@
   <div class="header2">
       <button class="btn-about">About</button>
       <button class="btn-lyrics">Lyrics</button>
-      <button class="btn-artist">{{this.sw.name}}</button>
+      <button class="btn-artist">{{this.actualArtist.name}}</button>
   </div>
 </template>
 
 <script>
-import Artists from '../models/Artists.js';
-const object = new Artists();
+const db = require("@/models/Artists.json");
 
 export default {
     name: "Header2",
     data () {
-        return {
-            sw: object.artists[0]
-        }
-    },
-    
+    return {
+      artists: db,
+      actualArtist: {}	
+    }
+  },
+  created () {
+    this.actualArtist = (this.artists.find(artist => artist.link === this.$route.params.id));
+  }
 }
 </script>
 

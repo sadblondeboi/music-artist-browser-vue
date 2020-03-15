@@ -46,7 +46,6 @@ export default {
 @font-face {
   font-family: 'PTSerif';
   src: url('./assets/PTSerif-Regular.ttf');
-
 }
 
 #app {

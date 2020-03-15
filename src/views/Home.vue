@@ -3,20 +3,16 @@
 		<Header  @sidebar-change="$emit('sidebar-change', $event)"/>
 		<div class="wrapper">
 			<div class="about-author">
-				<h4 class="author-name">{{this.authorName}}</h4>
-				<h2 class="album-name">{{this.albumName}}</h2>
+				<h4 class="author-name">{{this.actualArtist.name}}</h4>
+				<h2 class="album-name">{{this.actualArtist.albums[0].albumName}}</h2>
 				<h5 class="description-short">
-					It was originally released in late 1969 under
-					his birth name, Scott Engel, and failed to
-					chart. Subsequent reissues have been...
+					{{this.actualArtist.albums[0].shortDescription}}
 				</h5>
 			</div>
 
 			<div class="see-more">
-				<h5 class="release-year">{{this.albumReleaseYear}}</h5>
-				<router-link to="/artist/">
-					<button class="btn-more">See more</button>
-				</router-link>
+				<h5 class="release-year">{{this.actualArtist.albums[0].albumReleaseYear}}</h5>
+					<button class="btn-more" @click="routerChange(actualArtist.albums[0].albumLink)">See more</button>
 			</div>
 		</div>
 	</section>
@@ -24,6 +20,8 @@
 
 <script>
 import Header from "../components/Header.vue";
+const db = require("@/models/Artists.json");
+
 export default {
 	components: {
 		// Home,
@@ -31,12 +29,20 @@ export default {
 	},
 	data() {
 		return {
-			authorName: "Scott Walker",
-			albumName: "SCOTT 4",
-			descriptionShort: "",
-			albumReleaseYear: 1969
+			artists: db,
+			actualArtist: {}			
 		};
-	}
+	},
+	created () {
+		this.actualArtist = (this.artists.find(artist => artist.link === this.$route.params.id));
+	},
+	methods: {
+	routerChange(path) {
+		this.$router.push({
+		path: `/${this.actualArtist.link}/${path}`
+      });
+    }
+	},
 };
 </script>
 

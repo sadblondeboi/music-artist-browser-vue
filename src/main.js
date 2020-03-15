@@ -4,15 +4,21 @@ import App from './App.vue';
 import Home from './views/Home.vue';
 import Homepage from './views/Homepage.vue'
 import ArtistPage from './views/ArtistPage.vue';
-
 Vue.config.productionTip = false;
-
+// const db = require("@/models/Artists.json");
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/Home/', component: Homepage },
-  { path: '/', component: Home },
-  { path: '/Artist/', component: ArtistPage }
+  { 
+    path: '/', 
+    component: Homepage 
+  } , { 
+    path: '/:id',
+    component: Home,
+  } , { 
+    path: '/:id/:albumLink', 
+    component: ArtistPage,
+  }
 ];
 
 const router = new VueRouter({

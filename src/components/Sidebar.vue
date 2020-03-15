@@ -8,12 +8,12 @@
         </div>
         <div class="sidebar-panel-nav">
             <div class="home-button">
-            <button class="nav-button" :class="{active: isActive}" @click="routerChange('/Home/')">Home</button>
+            <button class="nav-button" :class="{active: isActive}" @click="routerChange('/')">Home</button>
             </div>
 
-            <button class="nav-button" @click="routerChange('/')">Album</button>
+            <button class="nav-button" @click="routerChange('/scott-walker/')">Scott Walker</button>
 
-            <button class="nav-button" @click="routerChange('/Artist')">Artist</button>
+            <button class="nav-button" @click="routerChange('/scott-walker/scott-3')">Scott 3</button>
 
         </div>
       </div>
@@ -121,7 +121,7 @@ button {
 }
 
 .nav-button {
-  padding: 20px 40px;
+  padding: 20px 50px;
 }
 
 .closeButton {
@@ -140,7 +140,7 @@ button {
 
 .home-button {
   background: url(../assets/home-icon.svg) no-repeat;
-  background-position: -1vh -1vw;
+  background-position: 1.5vh 5.75vw;
 }
 
 .active {

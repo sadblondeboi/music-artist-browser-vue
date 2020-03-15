@@ -1,20 +1,13 @@
 <template>
   <div class="main">
+      <!-- chowanie search bara jest totalnie bez sensu dlatego tej funkcji nie wprowadzam -->
       <div class="search-bar">
       <input type="text" placeholder="Search...">
       </div>
-      <button id="button1">By title</button>
-      <button id="button2">By artist</button>
-      <button id="button3">By year</button>
-
-      <form>
-       <input type="radio" v-model="optionPicked" id="one" value="One" class="category">
-       <input type="radio" v-model="optionPicked" id="two" value="Two" class="category">
-       <input type="radio" v-model="optionPicked" id="three" value="Three" class="category">
-       <span>picked: {{ optionPicked }}</span>          
-      </form>  
-
-
+      <!-- wiem ze to okropna praktyka ale ZDECYDOWANIE za dlugo nad tym siedzę -->
+      <button id="button1" @click="changeOption(option1)">By sth</button>
+      <button id="button2" @click="changeOption(option2)">By artist</button>
+      <button id="button3" @click="changeOption(option3)">By year</button>
   </div>
 </template>
 
@@ -22,7 +15,15 @@
 export default {
     data () {
         return {
-           optionPicked: '', 
+           option1: 'one',
+           option2: 'two',
+           option3: 'three',
+           isActive: false
+        }
+    },
+    methods: {
+        changeOption(payload) {
+            this.$emit("search-criteria-changed", payload);
         }
     }
 }
@@ -47,18 +48,24 @@ export default {
 }
 
 button {
-    color: #fff;
+    color: rgba(255, 255, 255, 0.603);
+    height: 6vh;
+    width: 120px;
     text-decoration: none;
     font-size: 1rem;
-    display: block;
-    padding-bottom: 0.5em;
+
     background: none;
-
-
+    text-align: center;
 }
 
 .search-bar {
     grid-area: header;
+    color:white;
+}
+
+::placeholder {
+    color: rgba(255, 255, 255, 0.829);
+    font-family: sans-serif;
 }
 
 .search-bar input {
@@ -66,9 +73,10 @@ button {
     height: 5vh;
     background-color: black;
     color: white;
+    font-family: sans-serif;
     border: none;
     border-bottom: 1px solid white;
-
+    font-size: inherit;
 }
 
 #button1 {
@@ -78,7 +86,7 @@ button {
 
 #button2 {
     grid-area: option2;
-    justify-content: center;
+
 }
 
 #button3 {

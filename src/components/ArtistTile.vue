@@ -1,6 +1,10 @@
 <template>
   <div>
-    <div class="main" @click="routerChange('/Artist')" :id="artist.name" :style="styleBinding" >{{artist.name}} </div>
+    <div class="main" 
+    @click="routerChange(artist.link)" 
+    :id="artist.name" 
+    :style="styleBinding" >{{artist.name}}
+    </div>
   </div>
 </template>
 
@@ -10,17 +14,21 @@
 
 
 export default {
-  data () {
-    return {
 
-    }
-  },
   props: {
     artist: Object
   },
+  data () {
+    return {
+      link: this.$route.params.link
+    }
+
+  },
   methods: {
     routerChange(path) {
-      this.$router.push(path);
+      this.$router.push({
+        path: `/${path}`
+      });
     }
   },
   computed: {
