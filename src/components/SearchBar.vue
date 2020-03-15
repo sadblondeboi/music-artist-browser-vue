@@ -7,12 +7,24 @@
       <button id="button2">By artist</button>
       <button id="button3">By year</button>
 
+      <form>
+       <input type="radio" v-model="optionPicked" id="one" value="One" class="category">
+       <input type="radio" v-model="optionPicked" id="two" value="Two" class="category">
+       <input type="radio" v-model="optionPicked" id="three" value="Three" class="category">
+       <span>picked: {{ optionPicked }}</span>          
+      </form>  
+
+
   </div>
 </template>
 
 <script>
 export default {
-
+    data () {
+        return {
+           optionPicked: '', 
+        }
+    }
 }
 </script>
 
