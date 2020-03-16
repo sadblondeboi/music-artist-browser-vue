@@ -3,10 +3,9 @@
 		<Header  @sidebar-change="$emit('sidebar-change', $event)"/>
 		<div class="wrapper">
 			<div class="about-author">
-				<h4 class="author-name">{{this.actualArtist.name}}</h4>
-				<h2 class="album-name">{{this.actualArtist.albums[0].albumName}}</h2>
+				<h2 class="author-name">{{this.actualArtist.name}}</h2>
 				<h5 class="description-short">
-					{{this.actualArtist.albums[0].shortDescription}}
+					{{this.actualArtist.shortDescription}}
 				</h5>
 			</div>
 
@@ -71,13 +70,14 @@ section {
 }
 
 .about-author .author-name {
-	font-size: 22px;
-	font-family: PTSerif;
+	/* font-size: 22px;
+	font-family: PTSerif; */
 	margin: 0;
-}
-.about-author .album-name {
 	font-size: 46px;
 	margin: 0;
+}
+.about-author .description-short {
+
 }
 
 .see-more {
