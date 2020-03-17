@@ -1,7 +1,7 @@
 <template>
   <div class="artist-list">
 	<ArtistTile
-		v-for="(artist, i) in artists"
+		v-for="(artist, i) in this.artists"
 		:key="i"
 		:artist = "artist"
 	/>
@@ -11,7 +11,7 @@
 <script>
 import ArtistTile from '../components/ArtistTile.vue'
 
-const db = require("@/models/Artists.json");
+const axios = require('axios');
 
 export default {
     components: {
@@ -19,9 +19,14 @@ export default {
     },
     data () {
 		return {
-			artists: db
+			artists: {}
 		}
 	},
+	mounted () {
+		axios
+			.get('http://api.geniusbutbetter:8081/artists')
+			.then(response => (this.artists = response.data))
+	}
 }
 </script>
 

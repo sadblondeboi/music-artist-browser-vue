@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="main" 
-    @click="routerChange(artist.link)" 
-    :id="artist.name" 
+    @click="routerChange(artist.id)" 
+    :id="artist.id" 
     :style="styleBinding" >{{artist.name}}
     </div>
   </div>
@@ -20,7 +20,7 @@ export default {
   },
   data () {
     return {
-      link: this.$route.params.link
+      link: this.$route.params.name
     }
 
   },
@@ -34,12 +34,12 @@ export default {
   computed: {
     styleBinding() {
       return {
-        'background-image': `url(${this.imgLink})`
+        'background-image': `url(${this.artist.img})`
       };
     },
-    imgLink() {
-      return require("../assets/img/grechuta.jpg");
-    }
+    // imgLink() {
+    //   return require("../assets/img/grechuta.jpg");
+    // }
   }
   
 }
@@ -47,7 +47,8 @@ export default {
 
 <style scoped>
 .main {
-  padding: 16vw;
-  font-size: 20px;
+  padding: 14vw;
+  font-size: 16px;
+  color: black;
 }
 </style>

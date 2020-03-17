@@ -1,17 +1,17 @@
 <template>
-	<section class="damn">
+	<section class="damn" :style="styleBinding">
 		<Header  @sidebar-change="$emit('sidebar-change', $event)"/>
 		<div class="wrapper">
 			<div class="about-author">
 				<h2 class="author-name">{{this.actualArtist.name}}</h2>
 				<h5 class="description-short">
-					{{this.actualArtist.shortDescription}}
+					<!-- {{this.actualArtist.shortDescription}} -->
 				</h5>
 			</div>
 
 			<div class="see-more">
-				<h5 class="release-year">{{this.actualArtist.albums[0].albumReleaseYear}}</h5>
-					<button class="btn-more" @click="routerChange(actualArtist.albums[0].albumLink)">See more</button>
+				<!-- <h5 class="release-year">{{this.actualArtist.albums[0].albumReleaseYear}}</h5> -->
+					<!-- <button class="btn-more" @click="routerChange(actualArtist.albums[0].albumLink)">See more</button> -->
 			</div>
 		</div>
 	</section>
@@ -19,8 +19,7 @@
 
 <script>
 import Header from "../components/Header.vue";
-const db = require("@/models/Artists.json");
-
+const axios = require('axios');
 export default {
 	components: {
 		// Home,
@@ -28,20 +27,42 @@ export default {
 	},
 	data() {
 		return {
-			artists: db,
-			actualArtist: {}			
-		};
+			artists: {},
+			actualArtist: {},
+			albumData: {},
+			albumsList: {}
+			}			
 	},
 	created () {
-		this.actualArtist = (this.artists.find(artist => artist.link === this.$route.params.id));
+		axios
+			.get('http://api.geniusbutbetter:8081/artists')
+			.then(
+				response => (this.artists = response.data,
+				this.actualArtist = (this.artists.find(artist => artist.id === this.$route.params.id))
+			))
+	},
+	mounted () {
+		axios
+			.get('http://api.geniusbutbetter:8081/artists/' + this.$route.params.id)
+			.then(
+				response => (this.albumData = response.data, 
+				this.albumsList = this.albumData.albums
+				))
 	},
 	methods: {
 	routerChange(path) {
 		this.$router.push({
-		path: `/${this.actualArtist.link}/${path}`
+		path: `/${this.actualArtist.id}/${path}`
       });
-    }
 	},
+	},
+	computed: {
+		styleBinding() {
+			return {
+				'background-image': `url(${this.actualArtist.img})`
+			};
+		}
+  }
 };
 </script>
 

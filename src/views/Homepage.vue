@@ -1,6 +1,5 @@
 <template>
 <section>
-	
 	<div class="header">
 		<MenuButton/> 
 	</div>	
@@ -18,7 +17,9 @@ import MenuButton from "@/components/buttons/MenuButton.vue"
 import SearchBar from "@/components/SearchBar.vue"
 import ArtistList from '@/components/ArtistList.vue'
 
-const db = require("@/models/Artists.json");
+
+const axios = require('axios');
+
 
 export default {
 	components: {
@@ -29,7 +30,7 @@ export default {
 	},
 	data () {
 		return {
-			artists: db
+			artists: {}
 		}
 	},
 	methods: {
@@ -37,11 +38,11 @@ export default {
 			this.$emit('toggle-menu')
 		},
 	},
-	// mounted () {
-	// 	axios
-	// 		.get('https://api.coindesk.com/v1/bpi/currentprice.json')
-	// 		.then(response => (this.info = response))
-	// }
+	mounted () {
+		axios
+			.get('http://api.geniusbutbetter:8081/artists')
+			.then(response => (this.artists = response.data))
+	}
 }
 </script>
 
