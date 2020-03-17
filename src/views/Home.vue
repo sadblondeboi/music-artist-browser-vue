@@ -5,32 +5,31 @@
 			<div class="about-author">
 				<h2 class="author-name">{{this.actualArtist.name}}</h2>
 				<h5 class="description-short">
-					<!-- {{this.actualArtist.shortDescription}} -->
+					{{this.actualArtistData.discription}}
 				</h5>
 			</div>
-
-			<div class="see-more">
-				<!-- <h5 class="release-year">{{this.actualArtist.albums[0].albumReleaseYear}}</h5> -->
-					<!-- <button class="btn-more" @click="routerChange(actualArtist.albums[0].albumLink)">See more</button> -->
-			</div>
+		</div>
+		<div class="shadows">
+			<AlbumList/>
 		</div>
 	</section>
 </template>
 
 <script>
 import Header from "../components/Header.vue";
+import AlbumList from "../components/AlbumList.vue";
 const axios = require('axios');
 export default {
 	components: {
 		// Home,
 		Header,
+		AlbumList
 	},
 	data() {
 		return {
 			artists: {},
 			actualArtist: {},
-			albumData: {},
-			albumsList: {}
+			actualArtistData: {}
 			}			
 	},
 	created () {
@@ -45,9 +44,8 @@ export default {
 		axios
 			.get('http://api.geniusbutbetter:8081/artists/' + this.$route.params.id)
 			.then(
-				response => (this.albumData = response.data, 
-				this.albumsList = this.albumData.albums
-				))
+				response => (this.actualArtistData = response.data
+			))
 	},
 	methods: {
 	routerChange(path) {
@@ -68,10 +66,7 @@ export default {
 
 <style scoped>
 section {
-	background: url("../assets/img/BG.png") no-repeat;
-	background-position: -40px -140px;
-	background-attachment: fixed;
-	
+	background-position: -200px 0;
 }
 </style>
 
@@ -88,35 +83,28 @@ section {
 	display: grid;
 	grid-template-rows: 2;
 	justify-items: start;
+	height: 42vh;
+}
+
+.about-author {
+	text-shadow: 1px 1px 12px black;
 }
 
 .about-author .author-name {
-	/* font-size: 22px;
-	font-family: PTSerif; */
+	/* font-size: 22px;  */
 	margin: 0;
+	margin-top: 4vh;
 	font-size: 46px;
-	margin: 0;
 }
 .about-author .description-short {
-
+	font-size: 16px;
+	font-family: PTSerif;
+	font-weight: 300;
 }
 
-.see-more {
-	align-self: center;
-	text-align: center;
-	margin: auto;
+.shadows {
+	box-shadow: 0px -20px 100px 100px black;
 }
 
-.see-more h5 {
-	margin-bottom: 5%;
-}
-
-.btn-more {
-	background: url(../assets/see_more_icon.svg) no-repeat;
-	background-position: bottom center;
-	height: 70px;
-	width: 100px;
-	color: white;
-}
 </style>
 

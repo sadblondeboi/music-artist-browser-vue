@@ -101,7 +101,7 @@ body {
 
 @keyframes down {
   from {
-    margin-top: 0;
+    margin-top: 0vh;
   }
   to{
     margin-top: -100vh;
@@ -113,7 +113,7 @@ body {
     margin-bottom: 100vh;
   }
   to{
-    margin-bottom: 0;
+    margin-bottom: 0vh;
   }
 }
 

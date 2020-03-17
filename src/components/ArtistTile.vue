@@ -9,20 +9,14 @@
 </template>
 
 <script>
-
-
-
-
 export default {
-
   props: {
     artist: Object
   },
   data () {
     return {
-      link: this.$route.params.name
+      link: this.$route.params.id
     }
-
   },
   methods: {
     routerChange(path) {
@@ -34,21 +28,21 @@ export default {
   computed: {
     styleBinding() {
       return {
-        'background-image': `url(${this.artist.img})`
+        'background-image': `url(${this.artist.img})`,
+        'background-position': '-230px -100px;',
+        'background-color': 'white'
       };
     },
-    // imgLink() {
-    //   return require("../assets/img/grechuta.jpg");
-    // }
   }
-  
 }
 </script>
 
 <style scoped>
 .main {
   padding: 14vw;
-  font-size: 16px;
+  font-size: 22px;
   color: black;
+  text-shadow: 1px 1px 36px grey;
+  max-width: 100vw;
 }
 </style>
