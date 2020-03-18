@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import App from './App.vue';
 import Home from './views/Home.vue';
 import Homepage from './views/Homepage.vue'
-import ArtistPage from './views/ArtistPage.vue';
+import AlbumPage from './views/AlbumPage.vue';
 Vue.config.productionTip = false;
 // const db = require("@/models/Artists.json");
 Vue.use(VueRouter);
@@ -17,7 +17,7 @@ const routes = [
     component: Home,
   } , { 
     path: '/:id/:albumLink', 
-    component: ArtistPage,
+    component: AlbumPage,
   }
 ];
 

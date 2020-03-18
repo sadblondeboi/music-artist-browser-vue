@@ -1,5 +1,10 @@
 <template>
   <div class="album-list">
+    <div class="info">
+      <h3>Nowe wydania</h3>
+      
+
+    </div>
     <AlbumTile
         v-for="(album, i) in this.albumList"
         :key="i"
@@ -39,5 +44,12 @@ export default {
 <style>
 .album-list {
   background-color: black;
+  text-align: center;
+  margin-bottom: 1vh;
+}
+
+.album-list h3 {
+  font-family: 'PT Serif';
+  /* font-weight: 300; */
 }
 </style>

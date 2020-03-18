@@ -6,21 +6,28 @@
         :style="styleBinding"> 
 
             <div class="album">
-                <img class="album-cover" :src="this.album.img">
-                <p class="album-name">{{album.name}}</p> 
+                <img class="album-cover" src="https://payload.cargocollective.com/1/1/59240/12588837/camilo-medina-paul1.jpg">
+                <!-- :src="this.album.img" -->
+                <div class="album-description"> 
+                <h4>{{album.name}}</h4> 
+                <h5 class="release-date">{{album.realeaseDate}}</h5>
+                </div> 
             </div>
         </div>      
     </div>
 </template>
 
 <script>
+// const axios = require('axios');
+
 export default {
     props: {
         album: Object
     },
     data () {
         return {
-            link: this.$route.params.id
+            link: this.$route.params.id,
+            // test: {}
         }
     },
     methods: {
@@ -33,15 +40,23 @@ export default {
     computed: {
         styleBinding() {
             return {
-                'img': `url(${this.album.img})`,
-
+                'img': `url(${this.album.img})`
             };
         },
-    }
+    },
+    // test pobierania coverów albumów z zewnętrznego API
+    // created () {
+	// 	axios
+    //         .get('https://api.happi.dev/v1/music/cover/100694/artist')
+    //         .then(
+    //         response => (this.test = response.request.responseURL, console.log(this.test)))
+    // }
 }
 </script>
 
 <style scoped>
+
+    
     .main {
         
     }
@@ -50,19 +65,28 @@ export default {
         display: grid;
         grid-template-columns: 1fr 2fr;
         grid-template-areas: left right;
-
     }
     
-    .album-name {
+    .album-description {
         text-align: center;
         justify-self: center;
         align-self: center;
     }
 
+    .album-description h4, h5 {
+        font-family: 'LibreBaskeville';
+        font-weight: 300;
+    }
+
+    .album-description .release-date {
+        color: rgba(101, 211, 230, 0.952)
+    }
+
     img {
         width: 36vw;
         height: 36vw;
-        padding: 1rem 1rem;
+        padding: 1vh 2vh;
+        
     }
 
 </style>

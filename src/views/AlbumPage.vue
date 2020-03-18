@@ -7,10 +7,10 @@
     <Header @sidebar-change="$emit('sidebar-change', $event)"/>  
     <Header2/>
     <div class="wrapper">
-        <h2 class="albumName">{{this.actualArtist.albums[0].name}}</h2>
-        <h3 class="albumReleaseYear">{{this.actualArtist.albums[0].albumReleaseYear}}</h3>
-        <h3 class="longDescription">{{this.actualArtist.albums[0].longDescription}}</h3>
-        <h3 class="longDescription2">{{this.actualArtist.albums[0].longDescription2}}</h3>
+        <h2 class="albumName">{{actualAlbum.name}}</h2>
+        <h3 class="albumReleaseYear">{{actualAlbum.realeaseDate}}</h3>
+        <h3 class="longDescription">{{actualAlbum.tracks}}</h3>
+        <h3 class="longDescription2">{{actualAlbum.name}}</h3>
     </div>
   </section>
   </div>
@@ -19,7 +19,7 @@
 <script>
 import Header from '../components/Header.vue';
 import Header2 from '../components/Header2.vue';
-const db = require("@/models/Artists.json");
+const axios = require('axios');
 
 export default {
 
@@ -29,12 +29,16 @@ export default {
   },
   data () {
     return {
-      artists: db,
-      actualArtist: {}	
+      actualAlbum: {}
     }
   },
-  created () {
-    this.actualArtist = (this.artists.find(artist => artist.link === this.$route.params.id));
+  mounted () {
+    axios
+      .get('http://api.geniusbutbetter:8081/albums/' + this.$route.params.albumLink)
+      // + this.$route.params.albumLink + '/tracks'
+      .then(
+        response => (this.actualAlbum = response.data)
+        )
   }
 }
 </script>

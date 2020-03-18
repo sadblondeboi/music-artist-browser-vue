@@ -71,6 +71,8 @@ section {
 </style>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Heebo:300,400&display=swap');
+
 section {
 	width: 100vw;
 	min-height: 100vh;
@@ -98,7 +100,7 @@ section {
 }
 .about-author .description-short {
 	font-size: 16px;
-	font-family: PTSerif;
+	font-family: 'Heebo';
 	font-weight: 300;
 }
 

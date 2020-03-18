@@ -2,24 +2,30 @@
   <div class="header2">
       <button class="btn-about">About</button>
       <button class="btn-lyrics">Lyrics</button>
-      <button class="btn-artist">{{this.actualArtist.name}}</button>
+      <!-- <button class="btn-artist">{{this.actualArtist.name}}</button> -->
   </div>
 </template>
 
 <script>
-const db = require("@/models/Artists.json");
+const axios = require('axios');
 
 export default {
     name: "Header2",
     data () {
     return {
-      artists: db,
+      artists: {},
       actualArtist: {}	
     }
   },
   created () {
-    this.actualArtist = (this.artists.find(artist => artist.link === this.$route.params.id));
-  }
+    // this.actualArtist = (this.artists.find(artist => artist.link === this.$route.params.id));
+    axios
+			.get('http://api.geniusbutbetter:8081/artists/')
+			.then(
+				response => (this.artists = response.data,
+				this.actualArtist = (this.artists.find(artist => artist.id === this.$route.params.id))
+			))
+	},
 }
 </script>
 
