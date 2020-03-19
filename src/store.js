@@ -1,7 +1,8 @@
 import Vue from "vue";
 
 export const store = Vue.observable({
-    isNavOpen: false
+    isNavOpen: false,
+    actualTrack: {}
 })
 
 export const mutations = {
@@ -10,5 +11,8 @@ export const mutations = {
     },
     closeNav() {
         store.isNavOpen = false;
+    },
+    setActualTrack(payload) {
+        store.actualTrack = payload;
     }
 }

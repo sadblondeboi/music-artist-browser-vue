@@ -1,8 +1,7 @@
 <template>
   <div class="header2">
       <button class="btn-about">About</button>
-      <button class="btn-lyrics">Lyrics</button>
-      <!-- <button class="btn-artist">{{this.actualArtist.name}}</button> -->
+      <button class="btn-artist">{{this.actualArtist.name}}</button>
   </div>
 </template>
 

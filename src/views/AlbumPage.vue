@@ -9,8 +9,10 @@
     <div class="wrapper">
         <h2 class="albumName">{{actualAlbum.name}}</h2>
         <h3 class="albumReleaseYear">{{actualAlbum.realeaseDate}}</h3>
-        <!-- <h3 class="longDescription">{{}}</h3> -->
-        <TrackList/>
+        <!-- <h3 class="longDescription">{{}}</h3> --> 
+        <transition name="slide">
+          <router-view> </router-view>
+        </transition>
     </div>
   </section>
   </div>
@@ -20,7 +22,6 @@
 import Header from '../components/Header.vue';
 import Header2 from '../components/Header2.vue';
 
-import TrackList from '../components/TrackList.vue';
 const axios = require('axios');
 
 export default {
@@ -28,7 +29,6 @@ export default {
   components: {
     Header,
     Header2,
-    TrackList
   },
   data () {
     return {

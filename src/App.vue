@@ -91,12 +91,12 @@ body {
 }
 /* SLIDE UP */
 .router-anim-enter-active{
-  animation: up 1s;
+  animation: up .75s;
   transition: all ease;
 }
 
 .router-anim-leave-active{
-  animation: down 1s;
+  animation: down .75s;
   transition: all ease;
 }
 
