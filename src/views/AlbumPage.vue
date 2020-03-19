@@ -9,8 +9,8 @@
     <div class="wrapper">
         <h2 class="albumName">{{actualAlbum.name}}</h2>
         <h3 class="albumReleaseYear">{{actualAlbum.realeaseDate}}</h3>
-        <h3 class="longDescription">{{actualAlbum.tracks}}</h3>
-        <h3 class="longDescription2">{{actualAlbum.name}}</h3>
+        <!-- <h3 class="longDescription">{{}}</h3> -->
+        <TrackList/>
     </div>
   </section>
   </div>
@@ -19,13 +19,16 @@
 <script>
 import Header from '../components/Header.vue';
 import Header2 from '../components/Header2.vue';
+
+import TrackList from '../components/TrackList.vue';
 const axios = require('axios');
 
 export default {
 
   components: {
     Header,
-    Header2
+    Header2,
+    TrackList
   },
   data () {
     return {
@@ -105,8 +108,6 @@ section {
 .wrapper {
 	margin-left: 5%;
 	margin-right: 5%;
-  display: grid;
-
 }
 
 .wrapper .albumName {

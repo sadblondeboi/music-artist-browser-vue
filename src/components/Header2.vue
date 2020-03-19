@@ -13,7 +13,6 @@ export default {
     name: "Header2",
     data () {
     return {
-      artists: {},
       actualArtist: {}	
     }
   },
@@ -22,8 +21,7 @@ export default {
     axios
 			.get('http://api.geniusbutbetter:8081/artists/')
 			.then(
-				response => (this.artists = response.data,
-				this.actualArtist = (this.artists.find(artist => artist.id === this.$route.params.id))
+				response => (this.actualArtist = (response.data.find(artist => artist.id === this.$route.params.id))
 			))
 	},
 }

@@ -18,6 +18,11 @@ const routes = [
   } , { 
     path: '/:id/:albumLink', 
     component: AlbumPage,
+    children: [
+      {
+        path: '/:trackName'
+      }
+    ]
   }
 ];
 
