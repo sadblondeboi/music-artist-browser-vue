@@ -60,7 +60,7 @@ export default {
   min-height: 100vh;
   min-width: 100vw;
 
-  position: absolute;
+
   color: white;
 
 }

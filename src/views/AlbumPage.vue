@@ -10,7 +10,7 @@
         <h2 class="albumName">{{actualAlbum.name}}</h2>
         <h3 class="albumReleaseYear">{{actualAlbum.realeaseDate}}</h3>
         <!-- <h3 class="longDescription">{{}}</h3> --> 
-        <transition name="slide">
+        <transition :name="transitionName">
           <router-view> </router-view>
         </transition>
     </div>
@@ -32,7 +32,8 @@ export default {
   },
   data () {
     return {
-      actualAlbum: {}
+      actualAlbum: {},
+      transitionName: ""
     }
   },
   mounted () {
@@ -42,6 +43,13 @@ export default {
       .then(
         response => (this.actualAlbum = response.data)
         )
+  },
+  watch: {
+    '$route' (to, from) {
+      const toDepth = to.path.split('/').length
+      const fromDepth = from.path.split('/').length
+      this.transitionName = toDepth < fromDepth ? 'slide-anim' : 'slide-left'
+    }
   }
 }
 </script>
@@ -57,9 +65,21 @@ export default {
   }
 }
 
-/*  */
+/* animation slide 
+nalezy tu uzyc dynamicznego przypisywania klas i sprawdzania SKĄD I DOKĄD przenoszą się komponenty, aby animacja
+była poprawna. Z View About obie animacje tak naprawdę są takie same, idą w LEWO: About.vue odchodzi w lewo, a Lyrics.vue 
+w tej samej chwili wjeżdża od prawej strony, a w drugą stronę dokładnie odwrotnie
+*/
 
-@keyframes slide{
+.slide-anim-leave-active{
+  animation: right .5s;
+}
+.slide-anim-enter-active{
+  animation: left .5s;
+
+}
+
+@keyframes left{
   from {
     margin-left: 100%;
   }
@@ -68,12 +88,12 @@ export default {
   }
 }
 
-@keyframes slide-leave{
+@keyframes right{
   from {
-    margin-right: 0%;
+    margin-left: 0%;
   }
   to {
-    margin-right: 100%;
+    margin-left: -100%;
   }
 }
 

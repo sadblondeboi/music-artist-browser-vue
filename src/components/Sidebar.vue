@@ -1,7 +1,7 @@
 // prawdopodobnie koniecznym będzie dodanie sidebara do app, zamiast do headera, zrobię to jutro
 <template>
   <div class="sidebar">
-    <transition name="slide">
+    <transition name="slide-sidebar">
       <div v-if="isPanelOpen" class="sidebar-panel">
         <div class="inside-header">
           <button class ="closeButton" @click="toggleSidebarPanel"></button>
@@ -64,17 +64,17 @@ export default {
 <style>
 /* transitions */
 
-.slide-leave-active {
-  animation: left 0.5s;
+.slide-sidebar-leave-active {
+  animation: left-sidebar 0.5s;
   transition: all ease;
 }
 
-.slide-enter-active {
-  animation: right 0.5s;
+.slide-sidebar-enter-active {
+  animation: right-sidebar 0.5s;
   transition: all ease;
 }
 
-@keyframes right {
+@keyframes right-sidebar {
   from {
     margin-left: -100vw;
   }
@@ -83,7 +83,7 @@ export default {
   }
 }
 
-@keyframes left {
+@keyframes left-sidebar {
   from {
     margin-right: 0;
   }

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <TrackList/>
   </div>
 </template>
@@ -14,6 +14,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.main {
+  position: absolute;
+  min-width: 100vw;
+}
 </style>

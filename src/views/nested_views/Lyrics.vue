@@ -1,6 +1,8 @@
 <template>
-  <div>
-      {{actualTrackData.lyrics}}
+  <div class="main">
+      <div class="test">
+        {{actualTrackData.lyrics}}
+      </div>
   </div>
 </template>
 
@@ -25,6 +27,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.main {
+  position: absolute;
+  min-width: 100vw;
+}
 </style>
