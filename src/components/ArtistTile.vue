@@ -1,9 +1,12 @@
 <template>
-  <div>
-    <div class="main" 
+  <div class="main">
+    <div class="element" 
     @click="routerChange(artist.id)" 
     :id="artist.id" 
-    :style="styleBinding" >{{artist.name}}
+    :style="styleBinding" >
+      <div>
+       {{artist.name}}
+      </div>    
     </div>
   </div>
 </template>
@@ -39,10 +42,17 @@ export default {
 
 <style scoped>
 .main {
-  padding: 14vw;
+
   font-size: 22px;
   color: black;
+
+}
+
+.element {
   text-shadow: 1px 1px 36px grey;
-  max-width: 100vw;
+  text-align: center;
+  align-content: center;
+  min-width: 100vw;
+  padding: 6vh 0;
 }
 </style>

@@ -122,17 +122,17 @@ body {
 /* tutaj jest do zmiany na enter/leave-active, ale ze względu na to że nie chcę marnować więcej czasu jest niedopracowane. View, do którego przechodzimy,
 nie wchodzi jednocześnie z wychodzeniem sidebara */
 .sidebar-anim-enter{
-    animation: right .5s;
+    animation: sid-right .5s;
     transition: all ease;
 }
 
 .sidebar-anim-leave{
-    animation: left .5s;
+    animation: sid-left .5s;
     transition: all ease;
 }
 
 
-@keyframes right {
+@keyframes sid-right {
     from {
         margin-left: -100vw;
     }
@@ -141,7 +141,7 @@ nie wchodzi jednocześnie z wychodzeniem sidebara */
     }
 }
 
-@keyframes left {
+@keyframes sid-left {
     from {
     margin-right: -100vw;
   }

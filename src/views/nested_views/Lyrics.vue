@@ -31,5 +31,6 @@ export default {
 .main {
   position: absolute;
   min-width: 100vw;
+  max-width: 100vw;
 }
 </style>
