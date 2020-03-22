@@ -37,6 +37,9 @@ export default {
   position: absolute;
   min-width: 100vw;
   max-width: 100vw;
+  padding-top: 1vh;
+  padding-bottom: 2vh;
+  font-family: 'Heebo';
 }
 
 .main .track-name {
@@ -55,9 +58,5 @@ export default {
   grid-template-rows: 2;
 
   grid-gap: 1vh;
-}
-
-.main .lyrics {
-
 }
 </style>

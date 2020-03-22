@@ -77,7 +77,7 @@ section {
 </style>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Heebo:300,400&display=swap');
+
 
 section {
 

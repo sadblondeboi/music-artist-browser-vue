@@ -1,18 +1,19 @@
 <template>
   <div class="main">
+    <img id='album-cover' src="https://payload.cargocollective.com/1/1/59240/12588837/camilo-medina-paul1.jpg" alt="">
     <div class="wrapper">
-    <!-- <div class="album">
-                <img class="album-cover" :src="this.actualAlbum.img">
-                <div class="album-description"> 
-                <h4>{{actualAlbum.name}}</h4> 
-                <h5 class="release-date">{{actualAlbum.realeaseDate}}</h5>
-                </div> 
-            </div> -->
-    <div class="album-info">
-      <h3 >{{actualAlbum.name}} tracklist:</h3>
-
-    </div>
-    <TrackList/>
+      <div class="album-info">
+        <div class="album-name">
+          <h3>{{actualAlbum.name}}</h3>
+        </div> 
+        <div class="album-description">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum minus perspiciatis eum nemo aspernatur natus, dolorum quasi earum recusandae dolores vero quibusdam officia, qui iusto.
+        </div>
+      </div>
+      <div class="tracks">
+        <!-- tu trzeba napisac ze to sa tracks of that album cos tam cos tam -->
+        <TrackList/>
+      </div> 
     </div>
   </div>
 </template>
@@ -35,55 +36,38 @@ export default {
 
 <style scoped>
 .main {
+
   position: absolute;
   min-width: 100vw;
   max-width: 100vw;
 }
 
-/* .main .albumName {
-	text-align: center;
-	margin: auto;
-  font-size: 32px;
+.wrapper {
+  margin-left: 5vw;
+	margin-right: 5vw;
 }
 
-.main .albumReleaseYear {
-  text-align: center;
-  font-weight: 500;
-  font-family: LibreBaskeville;
-} */
-
-.wrapper {
-  margin-left: 2vw;
-	margin-right: 2vw;
+.tracks {
+  margin-top: 2vh;
 }
 
 .album-info {
-  text-align: center;
+  font-family: 'Heebo';
 }
-.album {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-areas: left right;
+
+.album-name {
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 .album-description {
-  text-align: center;
-  justify-self: center;
-  align-self: center;
+  padding-left: 3vw;
+  padding-right: 3vw;
 }
 
-.album-description h4, h5 {
-  font-family: 'LibreBaskeville';
-  font-weight: 300;
+#album-cover {
+  width: 80vw;
+  padding: 2vw 5vw 0vw 10vw;
 }
 
-.album-description .release-date {
-  color: rgba(101, 211, 230, 0.952)
-}
-
-img {
-  width: 36vw;
-  height: 36vw;
-  padding: 1vh 1vh;  
-}
 </style>

@@ -31,16 +31,17 @@ export default {
 <style scoped>
 
 .main {
-	/* box-shadow: 0px 0px 4px .5px black; */
+	/* box-shadow: 2px 2px 2px 2px black; */
 }
 
 .header {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
-	padding-bottom: .5vh;
+
 	padding-top: .5vh;
-	background-color: rgba(15, 15, 15, 0.233);
+	background: rgb(0,0,0);
+	background: linear-gradient(180deg, rgba(0,0,0,0.6867121848739496) 0%, rgba(255,255,255,0) 100%);
 }
 
 .btn-menu {
@@ -63,6 +64,7 @@ export default {
 	text-shadow: 0px 8px 14px black;
 	font-size: 1rem;
 	padding: 0;
+	font-family: 'Heebo';
 }
 
 

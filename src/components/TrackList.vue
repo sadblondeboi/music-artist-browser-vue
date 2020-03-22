@@ -39,5 +39,6 @@ export default {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 4vh;
+    font-family: 'Heebo';
 } 
 </style>

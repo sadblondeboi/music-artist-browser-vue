@@ -3,11 +3,9 @@
       <!-- <img class="vinyl-img" src="../assets/vinyl1x.png"> -->
     <Header @sidebar-change="$emit('sidebar-change', $event)"/>  
     <!-- <Header2/> -->
-        <div class="test">
         <transition :name="transitionName">
           <router-view> </router-view>
         </transition>
-        </div>
   </div>
 </template>
 
@@ -28,10 +26,10 @@ export default {
     return {
       actualAlbum: {},
       transitionName: "slide-left",
-      backgroundStyling: {
-        'background-image' : "url(https://payload.cargocollective.com/1/1/59240/12588837/camilo-medina-paul1.jpg)",
-        'background-repeat' : "no-repeat"
-      }
+      // backgroundStyling: {
+      //   'background-image' : "url(https://payload.cargocollective.com/1/1/59240/12588837/camilo-medina-paul1.jpg)",
+      //   'background-repeat' : "no-repeat"
+      // }
     }
   },
   methods: {
@@ -142,8 +140,9 @@ this is a REAL mess but ill fix that some day
   margin-top: -50%;
 }
 
-.test {
-  margin-top: 40vh;
+#album-cover {
+  width: 80vw;
+  padding: 3vw 5vw 2vw 10vw;
 }
 
 </style>

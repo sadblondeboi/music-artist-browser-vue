@@ -43,7 +43,7 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Heebo:300,400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Heebo:300,400,500,700&display=swap');
 
 @font-face {
   font-family: 'PTSerif';

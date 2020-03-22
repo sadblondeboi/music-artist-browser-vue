@@ -3,7 +3,7 @@
       <div
         @click="routerChange(track.id)"
         :id="track.id">
-            {{track.name}}
+            <span id="track-name">{{track.name}}</span>
       </div>
       
   </div>
@@ -31,6 +31,12 @@ export default {
 <style>
 .track {
     padding: 1vh;
+    font-family: 'Heebo';
+}
+
+#track-name {
+    display: block;
+    border-bottom: 1px solid white;
 }
 
 </style>
