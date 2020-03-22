@@ -1,26 +1,18 @@
 <template>
   <div class="workpls">
-  <section>
-    <div class="vinyl-box">
-      <img class="vinyl-img" src="../assets/vinyl1x.png">
-    </div>
+      <!-- <img class="vinyl-img" src="../assets/vinyl1x.png"> -->
     <Header @sidebar-change="$emit('sidebar-change', $event)"/>  
     <Header2/>
-    <div class="wrapper">
-        <h2 class="albumName">{{actualAlbum.name}}</h2>
-        <h3 class="albumReleaseYear">{{actualAlbum.realeaseDate}}</h3>
-        <!-- <h3 class="longDescription">{{}}</h3> --> 
         <transition :name="transitionName">
           <router-view> </router-view>
         </transition>
-    </div>
-  </section>
   </div>
 </template>
 
 <script>
 import Header from '../components/Header.vue';
 import Header2 from '../components/Header2.vue';
+import { mutations } from "@/store.js";
 
 const axios = require('axios');
 
@@ -36,13 +28,17 @@ export default {
       transitionName: "slide-left"
     }
   },
+  methods: {
+    setActualAlbum: mutations.setActualAlbum,
+  },
   mounted () {
     axios
       .get('http://api.geniusbutbetter:8081/albums/' + this.$route.params.albumLink)
       // + this.$route.params.albumLink + '/tracks'
       .then(
-        response => (this.actualAlbum = response.data)
-        )
+        response => (this.actualAlbum = response.data,
+                     this.setActualAlbum(this.actualAlbum)
+        ))
   },
   watch: {
     '$route' (to, from) {
@@ -122,22 +118,9 @@ this is a REAL mess but ill fix that some day
 }
 
 
-body {
-
-}
-section {
-	width: 100vw;
-  height: 100vh;
-
-  overflow: hidden;
-}
-
 .workpls {
-  display: grid;  
-}
-
-.vinyl-box {
-  position: relative;
+  max-height: 100vh;
+  min-height: 100vh;
 }
 
 .vinyl-img {
@@ -150,29 +133,4 @@ section {
   margin-top: -50%;
 }
 
-.wrapper {
-	margin-left: 5%;
-	margin-right: 5%;
-}
-
-.wrapper .albumName {
-	text-align: center;
-	margin: auto;
-  font-size: 32px;
-
-}
-
-.wrapper .albumReleaseYear {
-  text-align: center;
-  font-weight: 500;
-  font-family: LibreBaskeville;
-}
-
-.wrapper .longDescription {
-  font-weight: 500;
-}
-
-.wrapper .longDescription2 {
-  font-weight: 500;
-}
 </style>

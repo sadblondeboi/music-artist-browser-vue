@@ -18,6 +18,8 @@
 <script>
 import Header from "../components/Header.vue";
 import AlbumList from "../components/AlbumList.vue";
+import { mutations } from "@/store.js";
+
 const axios = require('axios');
 export default {
 	components: {
@@ -32,12 +34,21 @@ export default {
 			actualArtistData: {}
 			}			
 	},
+	methods: {
+		routerChange(path) {
+			this.$router.push({
+				path: `/${this.actualArtist.id}/${path}`
+			});
+		},
+		setActualArtist: mutations.setActualArtist,
+	},
 	created () {
 		axios
 			.get('http://api.geniusbutbetter:8081/artists')
 			.then(
 				response => (this.artists = response.data,
-				this.actualArtist = (this.artists.find(artist => artist.id === this.$route.params.id))
+				this.actualArtist = this.artists.find(artist => artist.id === this.$route.params.id),
+				this.setActualArtist(this.actualArtist)			
 			))
 	},
 	mounted () {
@@ -46,13 +57,6 @@ export default {
 			.then(
 				response => (this.actualArtistData = response.data
 			))
-	},
-	methods: {
-	routerChange(path) {
-		this.$router.push({
-		path: `/${this.actualArtist.id}/${path}`
-      });
-	},
 	},
 	computed: {
 		styleBinding() {
@@ -67,6 +71,7 @@ export default {
 <style scoped>
 section {
 	background-position: -200px 0;
+	overflow: hidden;
 }
 </style>
 
@@ -74,8 +79,7 @@ section {
 @import url('https://fonts.googleapis.com/css?family=Heebo:300,400&display=swap');
 
 section {
-	width: 100vw;
-	min-height: 100vh;
+
 }
 
 .wrapper {

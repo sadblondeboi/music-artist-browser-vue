@@ -1,7 +1,12 @@
 <template>
   <div class="main">
-      <div class="test">
-        {{actualTrackData.lyrics}}
+      <div class="wrapper">
+        <div class="track-name">
+          {{actualTrackData.name}}
+        </div>
+        <div class="test">
+          {{actualTrackData.lyrics}}
+        </div>
       </div>
   </div>
 </template>
@@ -32,5 +37,10 @@ export default {
   position: absolute;
   min-width: 100vw;
   max-width: 100vw;
+}
+
+.wrapper {
+  margin-left: 2vw;
+	margin-right: 2vw;
 }
 </style>

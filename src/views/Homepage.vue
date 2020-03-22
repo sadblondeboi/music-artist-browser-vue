@@ -17,7 +17,6 @@ import MenuButton from "@/components/buttons/MenuButton.vue"
 import SearchBar from "@/components/SearchBar.vue"
 import ArtistList from '@/components/ArtistList.vue'
 
-
 const axios = require('axios');
 
 
@@ -60,7 +59,6 @@ section {
 	grid-template-rows: 2;
 	justify-items: start;
 	justify-content: left;
-	
 }
 
 .header {

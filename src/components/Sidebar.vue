@@ -1,4 +1,3 @@
-// prawdopodobnie koniecznym będzie dodanie sidebara do app, zamiast do headera, zrobię to jutro
 <template>
   <div class="sidebar">
     <transition name="slide-sidebar">
@@ -11,9 +10,9 @@
             <button class="nav-button" :class="{active: isActive}" @click="routerChange('/')">Home</button>
             </div>
 
-            <button class="nav-button" @click="routerChange('/scott-walker/')">Scott Walker</button>
+            <!-- <button class="nav-button" @click="routerChange('/' + actualArtist.id )">{{actualArtist.name}}</button>
 
-            <button class="nav-button" @click="routerChange('/scott-walker/scott-3')">Scott 3</button>
+            <button class="nav-button" @click="routerChange('/' + actualArtist.id + '/' + actualAlbum.id )">{{actualAlbum.name}}</button> -->
 
         </div>
       </div>
@@ -28,6 +27,9 @@ export default {
   data() {
     return {
       isActive: true,
+      // actualArtist: store.actualArtist,
+      // actualAlbum: store.actualAlbum,
+      // actualTrack: store.actualTrack
     }
   },
   methods: {

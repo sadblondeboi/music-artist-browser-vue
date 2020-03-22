@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-          <Sidebar @sidebar-change="setShowSidebar($event)"> 
-          </Sidebar>
-    <transition :name="this.transitionName"
-                @enter="closeSidebar">    
-      <router-view> </router-view>
+    <Sidebar @sidebar-change="setShowSidebar($event)"> 
+    </Sidebar>
+    <transition 
+      :name="this.transitionName"
+      @enter="closeSidebar">    
+        <router-view> </router-view>
     </transition>
   </div>
 </template>
@@ -71,24 +72,6 @@ body {
 
 }
 
-/* menu  */
-
-.container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0px;
-    padding: none;
-    min-height: 100vh;
-    background-color: black;
-    z-index: 999;
-    transition: all .5s ease-in-out;
-    
-}
-
-.show {
-  width: 100vw;
-}
 /* SLIDE UP */
 .router-anim-enter-active{
   animation: up .75s;

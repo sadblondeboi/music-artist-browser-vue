@@ -2,8 +2,9 @@ import Vue from "vue";
 
 export const store = Vue.observable({
     isNavOpen: false,
+    actualArtist: {},
+    actualAlbum: {},
     actualTrack: {},
-    actualArtist: {}
 })
 
 export const mutations = {
@@ -13,10 +14,13 @@ export const mutations = {
     closeNav() {
         store.isNavOpen = false;
     },
+    setActualArtist(payload) {
+        store.actualArtist = payload;
+    },
+    setActualAlbum(payload) {
+        store.actualAlbum = payload;
+    },
     setActualTrack(payload) {
         store.actualTrack = payload;
     },
-    setActualAlbum(payload) {
-        store.actualArtist = payload;
-    }
 }

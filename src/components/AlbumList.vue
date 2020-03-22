@@ -45,7 +45,7 @@ export default {
 .album-list {
   background-color: black;
   text-align: center;
-  margin-bottom: 1vh;
+  padding-bottom: 1vh;
 }
 
 .album-list h3 {
