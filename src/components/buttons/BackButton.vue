@@ -19,12 +19,12 @@ export default {
 
 button {
 	border: none;
-	padding: 20px 20px;
 }
 
 .btn-back {
 	background: url(../../assets/back_icon.svg) no-repeat;
 	background-position: center center;
+	padding-left: 4vh;
 }
 
 </style>

@@ -1,17 +1,19 @@
 <template>
-  <div class="workpls">
+  <div class="workpls" :style="backgroundStyling">
       <!-- <img class="vinyl-img" src="../assets/vinyl1x.png"> -->
     <Header @sidebar-change="$emit('sidebar-change', $event)"/>  
-    <Header2/>
+    <!-- <Header2/> -->
+        <div class="test">
         <transition :name="transitionName">
           <router-view> </router-view>
         </transition>
+        </div>
   </div>
 </template>
 
 <script>
 import Header from '../components/Header.vue';
-import Header2 from '../components/Header2.vue';
+// import Header2 from '../components/Header2.vue';
 import { mutations } from "@/store.js";
 
 const axios = require('axios');
@@ -20,12 +22,16 @@ export default {
 
   components: {
     Header,
-    Header2,
+    // Header2,
   },
   data () {
     return {
       actualAlbum: {},
-      transitionName: "slide-left"
+      transitionName: "slide-left",
+      backgroundStyling: {
+        'background-image' : "url(https://payload.cargocollective.com/1/1/59240/12588837/camilo-medina-paul1.jpg)",
+        'background-repeat' : "no-repeat"
+      }
     }
   },
   methods: {
@@ -121,6 +127,9 @@ this is a REAL mess but ill fix that some day
 .workpls {
   max-height: 100vh;
   min-height: 100vh;
+  background-size: 100vw;
+  background-position: 0 46px;
+
 }
 
 .vinyl-img {
@@ -131,6 +140,10 @@ this is a REAL mess but ill fix that some day
   width: 100%;
   top: 0;
   margin-top: -50%;
+}
+
+.test {
+  margin-top: 40vh;
 }
 
 </style>

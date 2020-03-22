@@ -1,7 +1,7 @@
 <template>
   <div class="album-list">
     <div class="info">
-      <h3>Nowe wydania</h3>
+      <h3>New releases:</h3>
       
 
     </div>
@@ -42,6 +42,7 @@ export default {
 </script>
 
 <style>
+
 .album-list {
   background-color: black;
   text-align: center;

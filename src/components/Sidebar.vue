@@ -96,13 +96,13 @@ export default {
 
 .sidebar-panel {
   overflow-y: auto;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.842);
   position: fixed;
   left: 0;
   top: 0;
   height: 100vh;
   z-index: 999;
-  width: 100vw;
+  width: 80vw;
   list-style-type: none;
 }
 

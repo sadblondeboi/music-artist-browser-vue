@@ -6,8 +6,9 @@
         :style="styleBinding"> 
 
             <div class="album">
-                <img class="album-cover" src="https://payload.cargocollective.com/1/1/59240/12588837/camilo-medina-paul1.jpg">
+                <img class="album-cover" :src="this.album.img">
                 <!-- :src="this.album.img" -->
+                <!-- src="https://payload.cargocollective.com/1/1/59240/12588837/camilo-medina-paul1.jpg" -->
                 <div class="album-description"> 
                 <h4>{{album.name}}</h4> 
                 <h5 class="release-date">{{album.realeaseDate}}</h5>

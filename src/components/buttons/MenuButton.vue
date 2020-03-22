@@ -33,12 +33,10 @@ export default {
     button {
         cursor: pointer;
         border: none;
-        padding: 20px 20px;
         background: url(../../assets/menu_icon.svg) no-repeat;
         background-position: center center;
     }
 
-    /* remove blue outline */
     button:focus {
         outline: 0;
     }

@@ -32,9 +32,8 @@ export default {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
-	margin-bottom: 2vh;
 	margin-left: 2vw;
-    margin-right: 2vw;
+  margin-right: 2vw;
 }
 
 button {

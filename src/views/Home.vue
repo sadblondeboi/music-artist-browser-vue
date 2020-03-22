@@ -31,8 +31,8 @@ export default {
 		return {
 			artists: {},
 			actualArtist: {},
-			actualArtistData: {}
-			}			
+			actualArtistData: {},
+		}			
 	},
 	methods: {
 		routerChange(path) {
@@ -61,7 +61,8 @@ export default {
 	computed: {
 		styleBinding() {
 			return {
-				'background-image': `url(${this.actualArtist.img})`
+				'background-image' : `url(${this.actualArtist.img})`,
+				'background-repeat' : "no-repeat"
 			};
 		}
   }
@@ -70,7 +71,7 @@ export default {
 
 <style scoped>
 section {
-	background-position: -200px 0;
+	background-position: -200px 0px;
 	overflow: hidden;
 }
 </style>
@@ -109,7 +110,7 @@ section {
 }
 
 .shadows {
-	box-shadow: 0px -20px 100px 100px black;
+	box-shadow: 0px -30px 100px 110px black;
 }
 
 </style>

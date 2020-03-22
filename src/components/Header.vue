@@ -1,8 +1,10 @@
 <template>
-	<div>
+	<div class="main">
 		<div class="header">
 			<BackButton/>
 			<MenuButton/>
+			<button class="test">Something something</button>
+			<div class="logo"></div>
 			<button class="btn-favourite"></button>
 		</div>
 	</div>
@@ -27,24 +29,18 @@ export default {
 </script>
 
 <style scoped>
+
+.main {
+	/* box-shadow: 0px 0px 4px .5px black; */
+}
+
 .header {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
-	margin-bottom: 2vh;
-	margin-left: 2vw;
-    margin-right: 2vw;
-	padding-top: 4vh;
-}
-
-button {
-	border: none;
-	padding: 20px 20px;
-}
-
-.btn-back {
-	background: url(../assets/back_icon.svg) no-repeat;
-	background-position: center center;
+	padding-bottom: .5vh;
+	padding-top: .5vh;
+	background-color: rgba(15, 15, 15, 0.233);
 }
 
 .btn-menu {
@@ -57,8 +53,17 @@ button {
 	margin-left: auto;
 	background: url(../assets/favourite_icon.svg) no-repeat;
 	background-position: center center;
+	padding-right: 4vh;
 }
 
+.test {
+	margin: auto;
+	background: none;
+	color: white;
+	text-shadow: 0px 8px 14px black;
+	font-size: 1rem;
+	padding: 0;
+}
 
 
 </style>

@@ -4,7 +4,7 @@
         <div class="track-name">
           {{actualTrackData.name}}
         </div>
-        <div class="test">
+        <div class="lyrics">
           {{actualTrackData.lyrics}}
         </div>
       </div>
@@ -39,8 +39,25 @@ export default {
   max-width: 100vw;
 }
 
+.main .track-name {
+	text-align: center;
+	margin: auto;
+  font-size: 24px;
+
+}
+
 .wrapper {
-  margin-left: 2vw;
-	margin-right: 2vw;
+  margin-left: 4vw;
+	margin-right: 4vw;
+  
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: 2;
+
+  grid-gap: 1vh;
+}
+
+.main .lyrics {
+
 }
 </style>
