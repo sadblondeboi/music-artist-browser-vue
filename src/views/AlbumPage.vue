@@ -1,8 +1,18 @@
 <template>
-  <div class="workpls" :style="backgroundStyling">
+  <div class="workpls">
       <!-- <img class="vinyl-img" src="../assets/vinyl1x.png"> -->
     <Header @sidebar-change="$emit('sidebar-change', $event)"/>  
     <!-- <Header2/> -->
+
+    <div class="wrapper">
+      <div class="album-info">
+        <div class="album-name">
+          <!-- <h3>{{actualAlbum.name}}</h3> -->
+        </div> 
+        <div class="album-description">
+       </div>
+      </div>
+    </div>
         <transition :name="transitionName">
           <router-view> </router-view>
         </transition>
@@ -11,8 +21,6 @@
 
 <script>
 import Header from '../components/Header.vue';
-// import Header2 from '../components/Header2.vue';
-import { mutations } from "@/store.js";
 
 const axios = require('axios');
 
@@ -26,22 +34,17 @@ export default {
     return {
       actualAlbum: {},
       transitionName: "slide-left",
-      // backgroundStyling: {
-      //   'background-image' : "url(https://payload.cargocollective.com/1/1/59240/12588837/camilo-medina-paul1.jpg)",
-      //   'background-repeat' : "no-repeat"
-      // }
     }
   },
   methods: {
-    setActualAlbum: mutations.setActualAlbum,
+
   },
   mounted () {
     axios
       .get('http://api.geniusbutbetter:8081/albums/' + this.$route.params.albumLink)
       // + this.$route.params.albumLink + '/tracks'
       .then(
-        response => (this.actualAlbum = response.data,
-                     this.setActualAlbum(this.actualAlbum)
+        response => (this.actualAlbum = response.data
         ))
   },
   watch: {
@@ -127,6 +130,7 @@ this is a REAL mess but ill fix that some day
   min-height: 100vh;
   background-size: 100vw;
   background-position: 0 46px;
+  padding-top: 5vh;
 
 }
 
@@ -140,9 +144,24 @@ this is a REAL mess but ill fix that some day
   margin-top: -50%;
 }
 
-#album-cover {
-  width: 80vw;
-  padding: 3vw 5vw 2vw 10vw;
+.wrapper {
+  margin-left: 5vw;
+	margin-right: 5vw;
 }
+
+.album-info {
+  font-family: 'Heebo';
+}
+
+.album-name {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.album-description {
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
 
 </style>

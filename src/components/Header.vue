@@ -31,7 +31,10 @@ export default {
 <style scoped>
 
 .main {
-	/* box-shadow: 2px 2px 2px 2px black; */
+	position: fixed;
+	top: -1px;
+	min-width: 100vw;
+	z-index: 10;
 }
 
 .header {

@@ -62,7 +62,7 @@ export default {
   min-width: 100vw;
 
   color: white;
-
+  /* padding-top: 5vh; */
 }
 
 body {

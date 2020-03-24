@@ -1,11 +1,12 @@
 <template>
   <div class="main">
-    <div class="element" 
+    <div class="tile" 
     @click="routerChange(artist.id)" 
-    :id="artist.id" 
-    :style="styleBinding" >
-      <div>
-       {{artist.name}}
+    :id="artist.id">
+      <!-- :style="styleBinding"  -->
+      <img id="artist-pic" :src="artist.artistImg">
+      <div id="artist-name">
+        <h4>{{artist.artistName}}</h4>
       </div>    
     </div>
   </div>
@@ -29,30 +30,48 @@ export default {
     }
   },
   computed: {
-    styleBinding() {
-      return {
-        'background-image': `url(${this.artist.img})`,
-        'background-position': '-230px -100px;',
-        'background-color': 'white'
-      };
-    },
+    // styleBinding() {
+    //   return {
+    //     'background-image': `url(${this.artist.artistImg})`,
+    //   };
+    // },
   }
 }
 </script>
 
 <style scoped>
 .main {
-
   font-size: 22px;
-  color: black;
-
+  color: white;
 }
 
-.element {
-  text-shadow: 1px 1px 36px grey;
+
+.tile {
+  text-shadow: 1px 1px 36px black;
   text-align: center;
-  align-content: center;
   min-width: 100vw;
-  padding: 6vh 0;
+
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas: left right;
+}
+
+img {
+  width: 36vw;
+  height: 36vw;
+  padding: 1vh 2vh;
+  border-radius: 50%;
+}
+
+.artist-name {
+  grid-area: right;
+
+  display: grid;
+}
+
+h4 {
+  margin: 0 0 0 0;
+  margin-top: 28%;
 }
 </style>

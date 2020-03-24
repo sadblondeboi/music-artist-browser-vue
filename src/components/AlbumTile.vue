@@ -6,11 +6,11 @@
         :style="styleBinding"> 
 
             <div class="album">
-                <img class="album-cover" :src="this.album.img">
+                <img class="album-cover" :src="this.album.albumImg">
                 <!-- :src="this.album.img" -->
                 <!-- src="https://payload.cargocollective.com/1/1/59240/12588837/camilo-medina-paul1.jpg" -->
                 <div class="album-description"> 
-                <h4>{{album.name}}</h4> 
+                <h4>{{album.albumName}}</h4> 
                 <h5 class="release-date">{{album.realeaseDate}}</h5>
                 </div> 
             </div>
@@ -83,11 +83,9 @@ export default {
         color: rgba(101, 211, 230, 0.952)
     }
 
-    img {
+    .album-cover {
         width: 36vw;
         height: 36vw;
         padding: 1vh 2vh;
-        
     }
-
 </style>

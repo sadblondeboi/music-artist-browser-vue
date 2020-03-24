@@ -1,11 +1,12 @@
 <template>
-	<section class="damn" :style="styleBinding">
+	<section class="damn">
 		<Header  @sidebar-change="$emit('sidebar-change', $event)"/>
+		<img id='artist-photo' :src="actualArtist.artistImg">
 		<div class="wrapper">
 			<div class="about-author">
-				<h2 class="author-name">{{this.actualArtist.name}}</h2>
+				<h2 class="author-name">{{this.actualArtist.artistName}}</h2>
 				<h5 class="description-short">
-					{{this.actualArtistData.discription}}
+					{{this.actualArtist.artistDescription}}
 				</h5>
 			</div>
 		</div>
@@ -18,7 +19,6 @@
 <script>
 import Header from "../components/Header.vue";
 import AlbumList from "../components/AlbumList.vue";
-import { mutations } from "@/store.js";
 
 const axios = require('axios');
 export default {
@@ -29,9 +29,7 @@ export default {
 	},
 	data() {
 		return {
-			artists: {},
 			actualArtist: {},
-			actualArtistData: {},
 		}			
 	},
 	methods: {
@@ -40,47 +38,30 @@ export default {
 				path: `/${this.actualArtist.id}/${path}`
 			});
 		},
-		setActualArtist: mutations.setActualArtist,
 	},
 	created () {
 		axios
-			.get('http://api.geniusbutbetter:8081/artists')
-			.then(
-				response => (this.artists = response.data,
-				this.actualArtist = this.artists.find(artist => artist.id === this.$route.params.id),
-				this.setActualArtist(this.actualArtist)			
-			))
-	},
-	mounted () {
-		axios
 			.get('http://api.geniusbutbetter:8081/artists/' + this.$route.params.id)
 			.then(
-				response => (this.actualArtistData = response.data
+				response => (this.actualArtist = response.data
 			))
 	},
 	computed: {
-		styleBinding() {
-			return {
-				'background-image' : `url(${this.actualArtist.img})`,
-				'background-repeat' : "no-repeat"
-			};
-		}
+		// styleBinding() {
+		// 	return {
+		// 		'background-image' : `url(${this.actualArtist.artistImg})`,
+		// 		'background-repeat' : "no-repeat"
+		// 	};
+		// }
   }
 };
 </script>
 
 <style scoped>
+
+
 section {
-	background-position: -200px 0px;
 	overflow: hidden;
-}
-</style>
-
-<style scoped>
-
-
-section {
-
 }
 
 .wrapper {
@@ -98,7 +79,6 @@ section {
 }
 
 .about-author .author-name {
-	/* font-size: 22px;  */
 	margin: 0;
 	margin-top: 4vh;
 	font-size: 46px;
