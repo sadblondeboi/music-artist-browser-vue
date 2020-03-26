@@ -12,6 +12,7 @@
                 <div class="album-description"> 
                 <h4>{{album.albumName}}</h4> 
                 <h5 class="release-date">{{album.realeaseDate}}</h5>
+                <h5 class="release-date">1999/69/420</h5>
                 </div> 
             </div>
         </div>      
@@ -56,12 +57,6 @@ export default {
 </script>
 
 <style scoped>
-
-    
-    .main {
-        
-    }
-    
     .album {
         display: grid;
         grid-template-columns: 1fr 2fr;
@@ -69,14 +64,14 @@ export default {
     }
     
     .album-description {
-        text-align: center;
-        justify-self: center;
         align-self: center;
     }
 
     .album-description h4, h5 {
-        font-family: 'LibreBaskeville';
-        font-weight: 300;
+        font-family: 'Heebo';
+        font-weight: 400;
+        font-size: 1rem;
+        margin: .0vh 1vh;
     }
 
     .album-description .release-date {

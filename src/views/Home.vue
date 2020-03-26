@@ -1,16 +1,20 @@
 <template>
-	<section class="damn">
+	<section class="home-artist">
 		<Header  @sidebar-change="$emit('sidebar-change', $event)"/>
-		<img id='artist-photo' :src="actualArtist.artistImg">
+		<div class="main-pic">
+			<img class='artist-photo' :src="actualArtist.artistImg">
+		</div>
 		<div class="wrapper">
 			<div class="about-author">
 				<h2 class="author-name">{{this.actualArtist.artistName}}</h2>
 				<h5 class="description-short">
+					Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
 					{{this.actualArtist.artistDescription}}
+					
 				</h5>
 			</div>
 		</div>
-		<div class="shadows">
+		<div class="album-list">
 			<AlbumList/>
 		</div>
 	</section>
@@ -59,38 +63,47 @@ export default {
 
 <style scoped>
 
-
-section {
+.home-artist {
 	overflow: hidden;
 }
 
 .wrapper {
-	margin-top: 50vh;
+	margin-top: -28vh;
 	margin-left: 4vw;
 	margin-right: 4vw;
 	display: grid;
 	grid-template-rows: 2;
 	justify-items: start;
-	height: 42vh;
-}
-
-.about-author {
-	text-shadow: 1px 1px 12px black;
+	
+	z-index: 11;
+	position: relative;
 }
 
 .about-author .author-name {
-	margin: 0;
-	margin-top: 4vh;
 	font-size: 46px;
+	text-shadow: 1px 4px 16px black;
+	margin-bottom: 1vh;
 }
 .about-author .description-short {
+	margin-top: 0;
 	font-size: 16px;
 	font-family: 'Heebo';
 	font-weight: 300;
 }
 
-.shadows {
-	box-shadow: 0px -30px 100px 110px black;
+.main-pic {
+	display: grid;
+}
+
+.main-pic .artist-photo {
+	z-index: -5;
+	width: 100%;
+} 
+
+.album-list {
+	z-index: 0;
+	position: relative;
+	box-shadow: 1vw 1vw 30vw 20vw black;
 }
 
 </style>

@@ -3,7 +3,7 @@
 		<div class="header">
 			<BackButton/>
 			<MenuButton/>
-			<button class="test">Something something</button>
+			<!-- <button class="test">Something something</button> -->
 			<div class="logo"></div>
 			<button class="btn-favourite"></button>
 		</div>

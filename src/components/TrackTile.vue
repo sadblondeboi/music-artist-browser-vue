@@ -27,13 +27,17 @@ export default {
 
 <style>
 .track {
+    height: 5vh;
+    width: 100%;
     padding: 1vh;
     font-family: 'Heebo';
+    border-bottom: 1px solid white;
 }
 
 #track-name {
     display: block;
-    border-bottom: 1px solid white;
+    padding: 1vh;
+    /* text-align: center; */
 }
 
 </style>

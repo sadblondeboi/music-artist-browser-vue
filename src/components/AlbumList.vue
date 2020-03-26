@@ -1,7 +1,7 @@
 <template>
   <div class="album-list">
     <div class="info">
-      <h3>New releases:</h3>
+      <!-- <h3>New releases:</h3> -->
       
 
     </div>
