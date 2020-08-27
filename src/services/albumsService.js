@@ -11,5 +11,9 @@ export async function getAlbum(id) {
 
 export async function getAlbumsByArtist(id) {
   const albums = await getAlbums();
-  return Object.values(albums).filter(album => album.artist === id);
+  const filteredAlbums = {};
+  Object.keys(albums).forEach(
+    (key) => albums[key].artist === id && (filteredAlbums[key] = albums[key])
+  );
+  return filteredAlbums;
 }

@@ -1,5 +1,16 @@
 {
   "albums": {
+    "189b4a42-6066-4afa-8d10-81417817cb74": {
+      "name": "Scott 3",
+      "descriptions": [
+        "It was originally released in late 1969 under his birth name, Scott Engel, and failed to chart. Subsequent reissues have been released under his stage name. It has since received praise as one of Walker's best works.",
+        "Scott 4 was the first Walker album to consist solely of self-penned songs. The preceding Scott, Scott 2 and Scott 3 albums had each featured a mixture of originals and covers, including several translations of Jacques Brel songs, which were later collected to form the album Scott Walker Sings Jacques Brel. Scott 4 also features slightly less ornate orchestral arrangements, opting instead for a more skeletal sound with greater emphasis on the rhythm section."
+      ],
+      "releaseDate": 1969,
+      "artist": "ace7232a-7612-4dfc-a7e4-fff8d0d71eb4",
+      "songs": ["be0eb5b6-244f-4de8-afae-ed7fb62e0de2"],
+      "cover": "http://localhost:3000/assets/189b4a42-6066-4afa-8d10-81417817cb73.jpg"
+    },
     "189b4a42-6066-4afa-8d10-81417817cb73": {
       "name": "Scott 4",
       "descriptions": [
@@ -23,6 +34,10 @@
   "artists": {
     "ace7232a-7612-4dfc-a7e4-fff8d0d71eb4": {
       "name": "Scott Walker",
+      "descriptions": [
+        "Was an American-born British singer-songwriter, composer and record producer. Walker was known for his baritone voice and an unorthodox career path which took him from 1960s teen pop icon to 21st-century avant-garde musician. Walker's success was largely in the United Kingdom, where his first four solo albums reached the top ten. He lived in the UK from 1965 and became a UK citizen in 1970."
+      ],
+      "portrait": "http://localhost:3000/assets/ace7232a-7612-4dfc-a7e4-fff8d0d71eb4.jpg",
       "lifespan": [-851389200000, 1553209200000]
     }
   }

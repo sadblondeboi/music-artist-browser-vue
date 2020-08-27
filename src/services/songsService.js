@@ -1,7 +1,7 @@
 import { service } from "./service";
 
 export async function getSongs() {
-  const { data } = service.get("/songs");
+  const { data } = await service.get("/songs");
   return data;
 }
 

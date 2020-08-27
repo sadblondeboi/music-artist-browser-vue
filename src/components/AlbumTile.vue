@@ -1,86 +1,70 @@
 <template>
-    <div>
-        <div class="main"
-        @click="routerChange(album.id)" 
-        :id="album.id" 
-        :style="styleBinding"> 
-
-            <div class="album">
-                <img class="album-cover" :src="this.album.albumImg">
-                <!-- :src="this.album.img" -->
-                <!-- src="https://payload.cargocollective.com/1/1/59240/12588837/camilo-medina-paul1.jpg" -->
-                <div class="album-description"> 
-                <h4>{{album.albumName}}</h4> 
-                <h5 class="release-date">{{album.realeaseDate}}</h5>
-                <h5 class="release-date">1999/69/420</h5>
-                </div> 
-            </div>
-        </div>      
+  <div class="album-tile" @click="$emit('click')">
+    <div class="album-tile__cover" :style="coverStyle" />
+    <div class="album-tile__description">
+      <h1 class="album-tile__name">{{ album.name }}</h1>
+      <span class="album-tile__release-date">{{ album.releaseDate }}</span>
     </div>
+  </div>
 </template>
 
 <script>
-// const axios = require('axios');
-
 export default {
-    props: {
-        album: Object
+  props: {
+    album: Object,
+  },
+  computed: {
+    coverStyle() {
+      return {
+        "background-image": `url(${this.album.cover})`,
+      };
     },
-    data () {
-        return {
-            link: this.$route.params.id,
-            // test: {}
-        }
-    },
-    methods: {
-        routerChange(path) {
-            this.$router.push({
-                path: `/${this.link}/${path}`
-            });
-        }
-    },
-    computed: {
-        styleBinding() {
-            return {
-                'img': `url(${this.album.img})`
-            };
-        },
-    },
-    // test pobierania coverów albumów z zewnętrznego API
-    // created () {
-	// 	axios
-    //         .get('https://api.happi.dev/v1/music/cover/100694/artist')
-    //         .then(
-    //         response => (this.test = response.request.responseURL, console.log(this.test)))
-    // }
-}
+  },
+};
 </script>
 
-<style scoped>
-    .album {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        grid-template-areas: left right;
+<style lang="scss" scoped>
+.album-tile {
+  $this: &;
+  width: 100%;
+  height: 8em;
+  position: relative;
+
+  &__cover {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    opacity: 0.5;
+
+    &::before {
+      content: "";
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000ba 100%);
+      width: 100%;
+      height: 100%;
+      position: absolute;
     }
-    
-    .album-description {
-        align-self: center;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: row;
+    margin: 0 2em;
+    align-items: center;
+    height: 100%;
+
+    #{$this}__name {
+      font-size: 2em;
+      font-weight: 700;
     }
 
-    .album-description h4, h5 {
-        font-family: 'Heebo';
-        font-weight: 400;
-        font-size: 1rem;
-        margin: .0vh 1vh;
+    #{$this}__release-date {
+      margin-left: auto;
+      font-size: 1.25em;
     }
-
-    .album-description .release-date {
-        color: rgba(101, 211, 230, 0.952)
-    }
-
-    .album-cover {
-        width: 36vw;
-        height: 36vw;
-        padding: 1vh 2vh;
-    }
+  }
+}
 </style>

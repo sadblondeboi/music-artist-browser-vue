@@ -1,13 +1,8 @@
 <template>
-  <div class="main">
-    <div class="tile" 
-    @click="routerChange(artist.id)" 
-    :id="artist.id">
-      <!-- :style="styleBinding"  -->
-      <img id="artist-pic" :src="artist.artistImg">
-      <div id="artist-name">
-        <h4>{{artist.artistName}}</h4>
-      </div>    
+  <div class="artist-tile" @click="$emit('click')">
+    <div class="artist-tile__portrait" :style="portraitStyle" />
+    <div class="artist-tile__name">
+      {{ artist.name }}
     </div>
   </div>
 </template>
@@ -15,63 +10,60 @@
 <script>
 export default {
   props: {
-    artist: Object
-  },
-  data () {
-    return {
-      link: this.$route.params.id
-    }
-  },
-  methods: {
-    routerChange(path) {
-      this.$router.push({
-        path: `/${path}`
-      });
-    }
+    artist: {
+      type: Object,
+      required: true,
+    },
   },
   computed: {
-    // styleBinding() {
-    //   return {
-    //     'background-image': `url(${this.artist.artistImg})`,
-    //   };
-    // },
-  }
-}
+    portraitStyle() {
+      return {
+        "background-image": `url(${this.artist.portrait})`,
+      };
+    },
+  },
+};
 </script>
 
-<style scoped>
-.main {
-  font-size: 22px;
+<style lang="scss" scoped>
+.artist-tile {
+  font-size: 1.375em;
+  text-shadow: 1px 1px 2.25em black;
+  width: 100%;
   color: white;
-}
+  display: flex;
+  align-items: center;
+  height: 6em;
+  position: relative;
 
+  &__portrait {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
 
-.tile {
-  text-shadow: 1px 1px 36px black;
-  text-align: center;
-  min-width: 100vw;
+    &::before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 1) 100%
+      );
+    }
+  }
 
-
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-areas: left right;
-}
-
-img {
-  width: 36vw;
-  height: 36vw;
-  padding: 1vh 2vh;
-  border-radius: 50%;
-}
-
-.artist-name {
-  grid-area: right;
-
-  display: grid;
-}
-
-h4 {
-  margin: 0 0 0 0;
-  margin-top: 28%;
+  &__name {
+    font-weight: bold;
+    font-size: 1.25em;
+    width: 100%;
+  }
 }
 </style>
