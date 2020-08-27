@@ -1,7 +1,6 @@
 {
-  "albums": [
-    {
-      "id": "189b4a42-6066-4afa-8d10-81417817cb73",
+  "albums": {
+    "189b4a42-6066-4afa-8d10-81417817cb73": {
       "name": "Scott 4",
       "descriptions": [
         "It was originally released in late 1969 under his birth name, Scott Engel, and failed to chart. Subsequent reissues have been released under his stage name. It has since received praise as one of Walker's best works.",
@@ -9,20 +8,22 @@
       ],
       "releaseDate": 1969,
       "artist": "ace7232a-7612-4dfc-a7e4-fff8d0d71eb4",
-      "songs": [],
+      "songs": ["be0eb5b6-244f-4de8-afae-ed7fb62e0de2"],
       "cover": "http://localhost:3000/assets/189b4a42-6066-4afa-8d10-81417817cb73.jpg"
     }
-  ],
-  "songs": [
-    { "id": 1, "body": "some comment", "postId": 1 }
-  ],
-  "artists": [
-    { 
-      "id": "ace7232a-7612-4dfc-a7e4-fff8d0d71eb4",
-      "name": "Scott Walker",
-      "lifespan": [
-        -851389200000, 1553209200000
+  },
+  "songs": {
+    "be0eb5b6-244f-4de8-afae-ed7fb62e0de2": {
+      "name": "The World's Strongest Man",
+      "lyrics": [
+        "As the morning turned my way\nSea birds flyin' through its hazy face\nAnd I came back here, to replace your place\nIn my life"
       ]
-     }
-  ]
+    }
+  },
+  "artists": {
+    "ace7232a-7612-4dfc-a7e4-fff8d0d71eb4": {
+      "name": "Scott Walker",
+      "lifespan": [-851389200000, 1553209200000]
+    }
+  }
 }
