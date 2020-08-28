@@ -40,7 +40,7 @@ export default {
       this.$emit("toggle-menu");
     },
     goToArtistPage(id) {
-      this.$router.push({
+      this.$emit("router", {
         name: "album",
         params: {
           id: id,
@@ -74,6 +74,8 @@ export default {
 @import "@/scss/styles";
 
 .home {
+  min-height: 100vh;
+
   &__header {
     margin: $padding-x;
     font-size: 2.875rem;

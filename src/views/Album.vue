@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="album__more-button">
-      <v-see-more-button />
+      <v-see-more-button @click="goToFullAlbum()" />
     </div>
   </div>
 </template>
@@ -52,6 +52,14 @@ export default {
       this.deg = `${(Math.atan(window.innerHeight / window.innerWidth) * -180) /
         Math.PI +
         180}deg`;
+    },
+    goToFullAlbum() {
+      this.$emit("router", {
+        name: "album-full",
+        params: {
+          id: this.albumId,
+        },
+      });
     },
   },
   computed: {
@@ -101,7 +109,8 @@ export default {
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% + #{$animation-margin});
+    top: -$animation-margin;
     background-size: cover;
     background-position: center;
     z-index: -1;
@@ -123,7 +132,6 @@ export default {
 
   &__wrapper {
     margin-top: auto;
-    margin-bottom: 1rem;
 
     #{$this}__artist-name {
       font-size: 1.375rem;
@@ -163,6 +171,7 @@ export default {
   }
 
   #{$this}__more-button {
+    z-index: 1;
     margin-left: auto;
     margin-right: auto;
   }

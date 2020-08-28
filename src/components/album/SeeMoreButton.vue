@@ -1,5 +1,5 @@
 <template>
-  <button class="see-more-button">
+  <button class="see-more-button" @click="$emit('click')">
     <svg
       class="see-more-button__icon"
       xmlns="http://www.w3.org/2000/svg"
@@ -29,19 +29,9 @@ export default {
 
 <style lang="scss" scoped>
 .see-more-button {
-  background-color: unset;
-  font-size: inherit;
-  font-weight: inherit;
-  font-family: inherit;
-  color: inherit;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  text-align: center;
-  opacity: 0.5;
-  margin: 0;
-  padding: 0;
-  outline: none;
+  opacity: .5;
 
   &__icon {
     margin: auto;
@@ -59,7 +49,7 @@ export default {
     transform: translateY(0rem);
   }
   50% {
-    transform: translateY(-0.1rem);
+    transform: translateY(-0.2rem);
   }
   100% {
     transform: translate(0rem);
