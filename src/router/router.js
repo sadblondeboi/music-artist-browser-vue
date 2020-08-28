@@ -18,7 +18,7 @@ export const routes = [
     component: Artist,
   },
   {
-    path: "/album/:id",
+    path: "/artist/album/:id",
     component: AlbumPage,
     children: [
       {

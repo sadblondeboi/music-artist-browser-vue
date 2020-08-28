@@ -1,135 +1,46 @@
 <template>
   <div id="app">
-    <Sidebar @sidebar-change="setShowSidebar($event)"> 
-    </Sidebar>
-    <transition 
-      :name="this.transitionName"
-      @enter="closeSidebar">    
-        <router-view> </router-view>
+    <v-sidebar />
+    <transition name="router-anim" @enter="closeSidebar">
+      <router-view> </router-view>
     </transition>
   </div>
 </template>
 
 <script>
-import Sidebar from '@/components/Sidebar.vue'
-import { store, mutations } from '@/store.js'
+import Sidebar from "@/components/Sidebar.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    Sidebar,
+    "v-sidebar": Sidebar,
   },
-  data () {
+  data() {
     return {
       showSidebar: false,
-    }
+    };
   },
   methods: {
     setShowSidebar(event) {
       this.showSidebar = event;
     },
-    closeSidebar: mutations.closeNav, 
-    toggleSidebarPanel: mutations.toggleNav,
   },
-  computed: {
-    transitionName() {
-      return this.showSidebar ? "sidebar-anim" : "router-anim";
-    },
-    isPanelOpen() {
-      return store.isNavOpen;
-    },
-  }
-}
+
+};
 </script>
 
-<style>
-@import url('https://fonts.googleapis.com/css?family=Heebo:300,400,500,700&display=swap');
-
-@font-face {
-  font-family: 'PTSerif';
-  src: url('./assets/PTSerif-Regular.ttf');
-}
-
-#app {
-  font-family: 'Avenir', Helvetica, Arial, 'LibreBaskeville', 'LibreBaskeville-Bold';
-  font-family: 'PT Serif', serif;
-  font-family: 'Raleway', sans-serif;
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  
-  /* min-height: 100vh;
-  min-width: 100vw; */
-
-  color: white;
-  /* padding-top: 5vh; */
-}
+<style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Raleway:wght@300;400;500;600;700;900&display=swap");
 
 body {
   margin: unset;
   background-color: black;
-
 }
 
-/* SLIDE UP */
-.router-anim-enter-active{
-  animation: up .75s;
-  transition: all ease;
+#app {
+  font-family: "Raleway", sans-serif;
+  color: white;
+  width: 100vw;
+  overflow-x: hidden;
 }
-
-.router-anim-leave-active{
-  animation: down .75s;
-  transition: all ease;
-}
-
-@keyframes down {
-  from {
-    margin-top: 0vh;
-  }
-  to{
-    margin-top: -100vh;
-  }
-}
-
-@keyframes up {
-  from {
-    margin-bottom: 100vh;
-  }
-  to{
-    margin-bottom: 0vh;
-  }
-}
-
-/* sidebar animations */
-/* tutaj jest do zmiany na enter/leave-active, ale ze względu na to że nie chcę marnować więcej czasu jest niedopracowane. View, do którego przechodzimy,
-nie wchodzi jednocześnie z wychodzeniem sidebara */
-.sidebar-anim-enter{
-    animation: sid-right .5s;
-    transition: all ease;
-}
-
-.sidebar-anim-leave{
-    animation: sid-left .5s;
-    transition: all ease;
-}
-
-
-@keyframes sid-right {
-    from {
-        margin-left: -100vw;
-    }
-    to {
-        margin-right: 0;
-    }
-}
-
-@keyframes sid-left {
-    from {
-    margin-right: -100vw;
-  }
-  to{
-    margin-left: -100vw;
-  }
-}
-
 </style>

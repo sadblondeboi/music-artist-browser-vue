@@ -1,33 +1,38 @@
 <template>
-  <section>
-    <div class="header">
-      <MenuButton />
+  <div class="home">
+    <div class="home__header">
+      Explore
     </div>
-    <div class="wrapper">
-      <h2>Explore</h2>
+    <SearchBar class="home__menu" :active.sync="active" />
+    <div class="home__artists-list" v-if="loaded">
+      <v-album-tile
+        v-for="(album, i) in albums"
+        :key="i"
+        :album="album"
+        :artist="artists[album.artist]"
+        @click="goToArtistPage(i)"
+      />
     </div>
-    <SearchBar />
-    <ArtistList :artists="artists" @active-artist="goToArtistPage($event)" />
-  </section>
+  </div>
 </template>
 
 <script>
-import MenuButton from "@/components/buttons/MenuButton.vue";
 import SearchBar from "@/components/SearchBar.vue";
-import ArtistList from "@/components/ArtistList.vue";
+import ArtistTile from "@/components/artist/ArtistTile.vue";
 
-import { getArtists } from "../services/artistsService";
+import { getAlbums } from "../services/albumsService";
+import { getArtist } from "../services/artistsService";
 
 export default {
   components: {
-    // ArtistTile,
-    MenuButton,
+    "v-album-tile": ArtistTile,
     SearchBar,
-    ArtistList,
   },
   data() {
     return {
+      albums: {},
       artists: {},
+      active: "newlyAdded",
     };
   },
   methods: {
@@ -36,44 +41,53 @@ export default {
     },
     goToArtistPage(id) {
       this.$router.push({
-        name: 'artist',
+        name: "artist",
         params: {
-          id: id
+          id: id,
         },
       });
     },
   },
   async mounted() {
-    this.artists = await getArtists();
+    this.$set(this, "albums", await getAlbums());
+    const artistsIds = [
+      ...new Set(Object.values(this.albums).map((album) => album.artist)),
+    ];
+    await Promise.all(
+      artistsIds.map(async (id) => {
+        this.$set(this.artists, id, await getArtist(id));
+      })
+    );
+  },
+  computed: {
+    loaded() {
+      return (
+        Object.keys(this.albums).length > 0 &&
+        Object.keys(this.artists).length > 0
+      );
+    },
   },
 };
 </script>
 
-<style scoped>
-section {
-  height: 100vh;
-  width: 100vw;
-}
+<style lang="scss" scoped>
+@import "@/scss/styles";
 
-.wrapper {
-  margin-left: 6vw;
-  margin-right: 6vw;
-  display: grid;
-  grid-template-rows: 2;
-  justify-items: start;
-  justify-content: left;
-}
+.home {
+  &__header {
+    margin: $padding-x;
+    font-size: 2.875rem;
+    font-weight: 600;
+  }
 
-.header {
-  margin-left: 2vw;
-  margin-right: 2vw;
-  padding-top: 4vh;
-}
+  &__menu {
+    margin-bottom: $tiles-margin;
+  }
 
-h2 {
-  font-size: 36px;
-}
-h4 {
-  font-weight: 400;
+  &__artists-list {
+    * {
+      margin-bottom: $tiles-margin;
+    }
+  }
 }
 </style>

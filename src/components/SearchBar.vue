@@ -1,96 +1,134 @@
 <template>
-  <div class="main">
-      <!-- chowanie search bara jest totalnie bez sensu dlatego tej funkcji nie wprowadzam -->
-      <div class="search-bar">
-      <input type="text" placeholder="Search...">
-      </div>
-      <!-- wiem ze to okropna praktyka ale ZDECYDOWANIE za dlugo nad tym siedzę -->
-      <button id="button1" @click="changeOption(option1)">By sth</button>
-      <button id="button2" @click="changeOption(option2)">By artist</button>
-      <button id="button3" @click="changeOption(option3)">By year</button>
+  <div class="menu">
+    <input class="menu__search-bar" type="text" placeholder="Search..." />
+    <div class="menu__buttons">
+      <button
+        class="menu__button"
+        :class="{ 'menu__button--active': i === active }"
+        v-for="(option, i) in options"
+        :key="i"
+        :ref="i"
+        @click="$emit('update:active', i)"
+      >
+        {{ option }}
+      </button>
+
+      <div class="menu__active" :style="{ left: left }" />
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-    data () {
-        return {
-           option1: 'one',
-           option2: 'two',
-           option3: 'three',
-           isActive: false
-        }
+  data() {
+    return {
+      options: {
+        newlyAdded: "Newly added",
+        byTitle: "By title",
+        byDate: "By date",
+      },
+      left: "0px",
+    };
+  },
+  mounted() {
+    addEventListener("resize", this.calculateOnResize.bind(this));
+  },
+  methods: {
+    changeOption(payload) {
+      this.$emit("search-criteria-changed", payload);
     },
-    methods: {
-        changeOption(payload) {
-            this.$emit("search-criteria-changed", payload);
-        }
-    }
-}
+    calculateOnResize() {
+      this.left = `${this.activeButton.offsetLeft}px`;
+    },
+  },
+  props: {
+    active: {
+      type: String,
+      required: false,
+    },
+  },
+  computed: {
+    activeButton() {
+      const def = Object.keys(this.options)[0];
+      const refs = this.$refs[this.active || def];
+      return refs && refs[0];
+    },
+  },
+  watch: {
+    active: {
+      immediate: true,
+      handler() {
+        !this.active &&
+          this.$emit("update:active", Object.keys(this.options)[0]);
+      },
+    },
+    activeButton() {
+      this.calculateOnResize();
+    },
+  },
+  beforeDestroy() {
+    removeEventListener("resize", this.calculateOnResize);
+  },
+};
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/scss/styles";
 
-.main {
-    display: grid;
-	grid-template-columns: [first] 1fr [second] 1fr [third] 1fr;
-    grid-template-rows: 6vh 6vh;
-	margin-bottom: 2vh;
-	margin-left: 2vw;
-    margin-right: 2vw;
+.menu {
+  $this: &;
 
-    text-align: center;
+  padding: 0 $padding-x;
+  width: calc(100% - 2 * #{$padding-x});
 
-
-    grid-template-areas: 
-    "header header header"
-    "option1 option2 option3";
-}
-
-button {
-    color: rgba(255, 255, 255, 0.603);
-    height: 6vh;
-    width: 120px;
-    text-decoration: none;
-    font-size: 1rem;
-
-    background: none;
-    text-align: center;
-}
-
-.search-bar {
-    grid-area: header;
-    color:white;
-}
-
-::placeholder {
-    color: rgba(255, 255, 255, 0.829);
-    font-family: sans-serif;
-}
-
-.search-bar input {
-    width: 90vw;
-    height: 5vh;
-    background-color: black;
-    color: white;
-    font-family: sans-serif;
-    border: none;
-    border-bottom: 1px solid white;
+  &__search-bar {
+    background-color: unset;
+    width: 100%;
+    padding: 0;
+    font-family: inherit;
     font-size: inherit;
-}
+    border: unset;
+    padding-bottom: 1em;
+    border-bottom: 1px solid white;
+    margin-bottom: 0.75em;
+    color: white;
+    font-weight: 500;
+    outline: none;
+  }
 
-#button1 {
-    grid-area: option1;
-    justify-content: center;
-}
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: $tiles-margin;
+    position: relative;
 
-#button2 {
-    grid-area: option2;
+    #{$this}__button {
+      margin: 0;
+      padding: 0;
+      display: block;
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+      background-color: unset;
+      outline: none;
+      opacity: 0.5;
+      transition: opacity 0.2s ease-out;
 
-}
+      &--active {
+        opacity: 1;
+      }
+    }
 
-#button3 {
-    grid-area: option3;
-    justify-content: center;
+    #{$this}__active {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background-color: white;
+      border-radius: 50%;
+      bottom: 0;
+      left: 0;
+      transition: left 0.2s ease-out;
+    }
+  }
 }
 </style>

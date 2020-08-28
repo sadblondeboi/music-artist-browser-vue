@@ -9,7 +9,7 @@
       "releaseDate": 1969,
       "artist": "ace7232a-7612-4dfc-a7e4-fff8d0d71eb4",
       "songs": ["be0eb5b6-244f-4de8-afae-ed7fb62e0de2"],
-      "cover": "http://localhost:3000/assets/189b4a42-6066-4afa-8d10-81417817cb73.jpg"
+      "cover": "http://localhost:3000/assets/189b4a42-6066-4afa-8d10-81417817cb74.jpg"
     },
     "189b4a42-6066-4afa-8d10-81417817cb73": {
       "name": "Scott 4",
@@ -39,6 +39,30 @@
       ],
       "portrait": "http://localhost:3000/assets/ace7232a-7612-4dfc-a7e4-fff8d0d71eb4.jpg",
       "lifespan": [-851389200000, 1553209200000]
+    },
+    "19e19dec-bb3c-439d-aa3d-2cee1c1ebd3f": {
+      "name": "Taco Hemingway",
+      "descriptions": [
+        "Is a Polish rapper, songwriter, and musician who has worked solo and as a part of the duo Taconafide together with the rapper Quebonafide."
+      ],
+      "portrait": "http://localhost:3000/assets/19e19dec-bb3c-439d-aa3d-2cee1c1ebd3f.jpg",
+      "lifespan": [-851389200000, 1553209200000]
+    },
+    "30259615-073e-4513-9646-de214d684c90": {
+      "name": "Men I Trust",
+      "descriptions": [
+        "is a Canadian indie pop band from Montreal, Quebec. Formed in 2014, the band consists of bassist Jessy Caron, multi-instrumentalist and producer Dragos Chiriac, and lead vocalist and guitarist Emma Proulx. The group self-released its early work and subsequently has released music on Canadian indie label Return To Analog."
+      ],
+      "portrait": "http://localhost:3000/assets/30259615-073e-4513-9646-de214d684c90.jpg",
+      "lifespan": [1388534400000]
+    },
+    "dded8ae6-09ce-4be2-bae5-27d3c34b70ff": {
+      "name": "Zbigniew Wodecki",
+      "descriptions": [
+        "is a Canadian indie pop band from Montreal, Quebec. Formed in 2014, the band consists of bassist Jessy Caron, multi-instrumentalist and producer Dragos Chiriac, and lead vocalist and guitarist Emma Proulx. The group self-released its early work and subsequently has released music on Canadian indie label Return To Analog."
+      ],
+      "portrait": "http://localhost:3000/assets/dded8ae6-09ce-4be2-bae5-27d3c34b70ff.jpg",
+      "lifespan": [1388534400000]
     }
   }
 }
