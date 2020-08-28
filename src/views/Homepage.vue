@@ -41,7 +41,7 @@ export default {
     },
     goToArtistPage(id) {
       this.$router.push({
-        name: "artist",
+        name: "album",
         params: {
           id: id,
         },

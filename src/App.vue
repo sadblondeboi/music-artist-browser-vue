@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <v-sidebar />
-    <transition name="router-anim" @enter="closeSidebar">
-      <router-view> </router-view>
-    </transition>
+    <router-view> </router-view>
   </div>
 </template>
 
@@ -25,7 +23,6 @@ export default {
       this.showSidebar = event;
     },
   },
-
 };
 </script>
 
@@ -42,5 +39,9 @@ body {
   color: white;
   width: 100vw;
   overflow-x: hidden;
+}
+
+svg {
+  fill: white;
 }
 </style>
