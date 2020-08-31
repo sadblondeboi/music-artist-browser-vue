@@ -1,10 +1,14 @@
 <template>
   <header class="header">
     <div class="header__left">
-      <v-menu-button />
+      <v-menu-button v-show="!menuButton" @click="$emit('show-menu', true)" />
+      <v-close-button v-show="menuButton" @click="$emit('show-menu', false)" />
     </div>
     <div class="header__center">
-      <v-top-button @click="$emit('router-return', 'return')" />
+      <v-top-button
+        v-if="returnButton"
+        @click="$emit('router-return', 'return')"
+      />
     </div>
     <div class="header__right"></div>
   </header>
@@ -13,12 +17,26 @@
 <script>
 import MenuButton from "./MenuButton.vue";
 import TopButton from "./TopButton.vue";
+import CloseButton from "./CloseButton.vue";
 
 export default {
   name: "TheHeader",
   components: {
     "v-menu-button": MenuButton,
     "v-top-button": TopButton,
+    "v-close-button": CloseButton,
+  },
+  props: {
+    returnButton: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    menuButton: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
 };
 </script>
@@ -32,7 +50,7 @@ export default {
   position: absolute;
   width: calc(100% - 2 * 1.25rem);
   padding: $padding-y 1.25rem;
-  z-index: 1;
+  z-index: 1000;
 
   &__left,
   &__center,

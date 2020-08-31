@@ -1,16 +1,19 @@
 <template>
   <div class="home">
-    <div class="home__header">
+    <div class="home__header" :style="headerTopOffset">
       Explore
     </div>
-    <SearchBar class="home__menu" :active.sync="active" />
+    <div class="home__menu">
+      <v-search-bar v-model="search" />
+      <v-indicator-navigation :options="options" :active.sync="active" />
+    </div>
     <div class="home__artists-list" v-if="loaded">
       <v-album-tile
-        v-for="(album, i) in albums"
+        v-for="(album, i) in bySearch"
         :key="i"
         :album="album"
-        :artist="artists[album.artist]"
-        @click="goToArtistPage(i)"
+        :artist="artists[album.artist] || {}"
+        @click="goToArtistPage(album.id)"
       />
     </div>
   </div>
@@ -18,21 +21,32 @@
 
 <script>
 import SearchBar from "@/components/SearchBar.vue";
-import ArtistTile from "@/components/artist/ArtistTile.vue";
+import AlbumTile from "@/components/artist/AlbumTile.vue";
+import IndicatorNavigation from "@/components/navigation/IndicatorNavigation.vue";
+
+import { HeaderOffsetMixin } from "../mixins/HeaderOffsetMixin";
 
 import { getAlbums } from "../services/albumsService";
 import { getArtist } from "../services/artistsService";
 
 export default {
+  mixins: [HeaderOffsetMixin],
   components: {
-    "v-album-tile": ArtistTile,
-    SearchBar,
+    "v-album-tile": AlbumTile,
+    "v-indicator-navigation": IndicatorNavigation,
+    "v-search-bar": SearchBar,
   },
   data() {
     return {
       albums: {},
       artists: {},
       active: "newlyAdded",
+      options: {
+        newlyAdded: "Newly added",
+        byTitle: "By title",
+        byDate: "By date",
+      },
+      search: "",
     };
   },
   methods: {
@@ -49,7 +63,9 @@ export default {
     },
   },
   async mounted() {
-    this.$set(this, "albums", await getAlbums());
+    this.$emit("previous-page", undefined);
+
+    this.albums = await getAlbums();
     const artistsIds = [
       ...new Set(Object.values(this.albums).map((album) => album.artist)),
     ];
@@ -66,6 +82,30 @@ export default {
         Object.keys(this.artists).length > 0
       );
     },
+    albumsArray() {
+      const ids = Object.keys(this.albums);
+      const newArray = Object.values(this.albums).map((album, i) => {
+        return {
+          ...album,
+          id: ids[i],
+        };
+      });
+      return newArray;
+    },
+    byFilter() {
+      switch (this.active) {
+        case "byTitle":
+          return [...this.albumsArray].sort((a, b) => a.name > b.name ? 1 : -1);
+        case "byDate":
+          return [...this.albumsArray].sort((a, b) => a.releaseDate < b.releaseDate ? 1 : -1);
+        default:
+          return this.albumsArray;
+      }
+    },
+    bySearch() {
+      return [...this.byFilter].filter(album => album.name.toLowerCase().startsWith(this.search.toLowerCase().trim()));
+
+    },
   },
 };
 </script>
@@ -78,11 +118,14 @@ export default {
 
   &__header {
     margin: $padding-x;
+    margin-top: 0;
+    margin-bottom: 1rem;
     font-size: 2.875rem;
     font-weight: 600;
   }
 
   &__menu {
+    padding: 0 $padding-x;
     margin-bottom: $tiles-margin;
   }
 

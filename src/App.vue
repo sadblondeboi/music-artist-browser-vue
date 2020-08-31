@@ -1,49 +1,80 @@
 <template>
-  <div id="app">
-    <!-- <v-sidebar /> -->
-    <v-header @router-return="goToPreviousPage" />
+  <div id="app" :style="{ '--vh': vh }">
+    <v-header
+      @router-return="goToPreviousPage"
+      @show-menu="showMenu = $event"
+      :returnButton="!!previousPage && !showMenu"
+      :menuButton="showMenu"
+    />
+    <transition name="slide">
+      <v-menu v-if="showMenu" @router="[goToPage($event), (showMenu = false)]"/>
+    </transition>
     <transition :name="transitionName" mode="out-in">
-      <router-view @router="goToPage($event)"> </router-view>
+      <router-view
+        @router="goToPage($event)"
+        @previous-page="previousPage = $event"
+      >
+      </router-view>
     </transition>
   </div>
 </template>
 
 <script>
 import TheHeader from "./components/header/TheHeader.vue";
-
-// import Sidebar from "@/components/Sidebar.vue";
+import TheMenu from "./components/menu/TheMenu.vue";
 
 export default {
   name: "app",
   components: {
-    // "v-sidebar": Sidebar,
+    "v-menu": TheMenu,
     "v-header": TheHeader,
   },
   data() {
     return {
-      showSidebar: false,
+      showMenu: false,
       transitionName: "slide-top",
+      vh: "0px",
+      previousPage: undefined,
     };
+  },
+  mounted() {
+    this.setProperHeight();
+    addEventListener("resize", this.setProperHeight.bind(this));
   },
   methods: {
     setShowSidebar(event) {
       this.showSidebar = event;
     },
-    goToPreviousPage() {
+    async goToPreviousPage() {
       this.transitionName = "slide-bottom";
-      this.$router.go(-1);
+      try {
+        await this.$router.push(this.previousPage);
+      } catch (e) {
+        e;
+      }
     },
-    goToPage(event) {
+    async goToPage(event) {
       this.transitionName = "slide-top";
-      this.$router.push(event);
+      try {
+        await this.$router.push(event);
+      } catch (e) {
+        e;
+      }
     },
+    setProperHeight() {
+      this.vh = `${window.innerHeight * 0.01}px`;
+    },
+  },
+  beforeDestroy() {
+    removeEventListener("resize", this.setProperHeight);
   },
 };
 </script>
 
 <style lang="scss">
 @import "@/scss/styles";
-@import url("https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Raleway:wght@300;400;500;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap");
 
 body {
   margin: unset;
@@ -55,11 +86,18 @@ body {
   color: white;
   width: 100vw;
   overflow-x: hidden;
-  min-height: 100vh;
+  position: relative;
+  max-width: 480px;
+  margin: auto;
+  @include device-height();
 }
 
 svg {
   fill: white;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 button {
@@ -93,5 +131,19 @@ button {
 .slide-bottom-enter {
   opacity: 0;
   transform: translateY(-#{$animation-margin});
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform ease-in-out 0.5s;
+  transform: translateX(0%);
+}
+
+.slide-leave-to {
+  transform: translateX(-100%);
+}
+
+.slide-enter {
+  transform: translateX(-100%);
 }
 </style>

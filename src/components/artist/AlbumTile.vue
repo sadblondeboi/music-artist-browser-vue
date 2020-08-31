@@ -17,6 +17,7 @@
 
 <script>
 export default {
+  name: "AlbumTile",
   props: {
     album: {
       type: Object,
@@ -84,7 +85,7 @@ export default {
 
     #{$this}__artist-name {
       font-weight: 500;
-      opacity: .85;
+      opacity: 0.85;
     }
 
     #{$this}__name {

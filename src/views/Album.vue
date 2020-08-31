@@ -1,5 +1,5 @@
 <template>
-  <div class="album">
+  <div class="album" ref="cover">
     <div class="album__background" :style="backgroundStyle">
       <div class="album__background-light-gradient" :style="gradientStyle" />
     </div>
@@ -44,18 +44,26 @@ export default {
     this.album = await getAlbum(this.albumId);
     this.artist = await getArtist(this.album.artist);
 
+    this.$emit("previous-page", {
+      name: "home",
+    });
+
     this.calculateGradientDeg();
     addEventListener("resize", this.calculateGradientDeg.bind(this));
   },
   methods: {
     calculateGradientDeg() {
-      this.deg = `${(Math.atan(window.innerHeight / window.innerWidth) * -180) /
+      const ref = this.$refs.cover;
+      if (!ref)
+        return;
+
+      this.deg = `${(Math.atan(ref.clientHeight / ref.clientWidth) * -180) /
         Math.PI +
-        180}deg`;
+        177}deg`;
     },
     goToFullAlbum() {
       this.$emit("router", {
-        name: "album-full",
+        name: "album-about",
         params: {
           id: this.albumId,
         },
@@ -68,7 +76,7 @@ export default {
     },
     gradientStyle() {
       return {
-        background: `linear-gradient(${this.deg}, rgba(255, 255, 255, .05) 49.9%, rgba(0, 0, 0, 0) 50.1%)`,
+        background: `linear-gradient(${this.deg}, rgba(255, 255, 255, 0.075) 52.4%, rgba(0, 0, 0, 0) 52.6%)`,
       };
     },
     backgroundStyle() {
@@ -86,7 +94,7 @@ export default {
     },
   },
   beforeDestroy() {
-    removeEventListener("resize", this.calculateGradientDeg);
+    removeEventListener("resize", this.calculateGradientDeg.bind(this));
   },
 };
 </script>
@@ -100,21 +108,21 @@ export default {
   display: flex;
   flex-direction: column;
   position: relative;
-  height: calc(100vh - 2 * #{$padding-y});
+  min-height: inherit;
   width: calc(100% - 2 * #{$padding-x});
+  @include device-height(2 * $padding-y);
   padding: $padding-y $padding-x;
 
   &__background {
     position: absolute;
     left: 0;
-    top: 0;
     width: 100%;
-    height: calc(100% + #{$animation-margin});
+    height: calc(100% + 2 * #{$animation-margin});
     top: -$animation-margin;
     background-size: cover;
     background-position: center;
     z-index: -1;
-    opacity: 0.75;
+    opacity: .9;
 
     &::after,
     #{$this}__background-light-gradient {
@@ -124,7 +132,7 @@ export default {
       height: 100%;
       background: linear-gradient(
         180deg,
-        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 50%,
         rgba(0, 0, 0, 1) 100%
       );
     }
@@ -150,7 +158,7 @@ export default {
 
     #{$this}__description {
       font-size: 1rem;
-      font-family: "PT Serif", serif;
+      font-family: 'Libre Baskerville', serif;
       opacity: 0.8;
       margin-bottom: 1rem;
     }
