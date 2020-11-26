@@ -1,0 +1,127 @@
+{
+  "albums": {
+    "189b4a42-6066-4afa-8d10-81417817cb74": {
+      "name": "Scott 3",
+      "descriptions": [
+        "It was originally released in late 1969 under his birth name, Scott Engel, and failed to chart. Subsequent reissues have been released under his stage name. It has since received praise as one of Walker's best works.",
+        "Scott 4 was the first Walker album to consist solely of self-penned songs. The preceding Scott, Scott 2 and Scott 3 albums had each featured a mixture of originals and covers, including several translations of Jacques Brel songs, which were later collected to form the album Scott Walker Sings Jacques Brel. Scott 4 also features slightly less ornate orchestral arrangements, opting instead for a more skeletal sound with greater emphasis on the rhythm section."
+      ],
+      "releaseDate": 1969,
+      "artist": "ace7232a-7612-4dfc-a7e4-fff8d0d71eb4",
+      "songs": ["be0eb5b6-244f-4de8-afae-ed7fb62e0de2"],
+      "cover": "http://109.173.167.138:3000/assets/189b4a42-6066-4afa-8d10-81417817cb74.jpg"
+    },
+    "189b4a42-6066-4afa-8d10-81417817cb73": {
+      "name": "Scott 4",
+      "descriptions": [
+        "It was originally released in late 1969 under his birth name, Scott Engel, and failed to chart. Subsequent reissues have been released under his stage name. It has since received praise as one of Walker's best works.",
+        "Scott 4 was the first Walker album to consist solely of self-penned songs. The preceding Scott, Scott 2 and Scott 3 albums had each featured a mixture of originals and covers, including several translations of Jacques Brel songs, which were later collected to form the album Scott Walker Sings Jacques Brel. Scott 4 also features slightly less ornate orchestral arrangements, opting instead for a more skeletal sound with greater emphasis on the rhythm section."
+      ],
+      "releaseDate": 1969,
+      "artist": "ace7232a-7612-4dfc-a7e4-fff8d0d71eb4",
+      "songs": ["be0eb5b6-244f-4de8-afae-ed7fb62e0de2"],
+      "cover": "http://109.173.167.138:3000/assets/189b4a42-6066-4afa-8d10-81417817cb73.jpg"
+    },
+    "189b4a42-6066-4afa-8d10-81417817cb76": {
+      "name": "Jarmark",
+      "descriptions": [
+        "It was originally released in late 1969 under his birth name, Scott Engel, and failed to chart. Subsequent reissues have been released under his stage name. It has since received praise as one of Walker's best works.",
+        "Scott 4 was the first Walker album to consist solely of self-penned songs. The preceding Scott, Scott 2 and Scott 3 albums had each featured a mixture of originals and covers, including several translations of Jacques Brel songs, which were later collected to form the album Scott Walker Sings Jacques Brel. Scott 4 also features slightly less ornate orchestral arrangements, opting instead for a more skeletal sound with greater emphasis on the rhythm section."
+      ],
+      "releaseDate": 2020,
+      "artist": "19e19dec-bb3c-439d-aa3d-2cee1c1ebd3f",
+      "songs": [
+        "4130c822-cfc8-4586-a5e4-80f8348ff4d4",
+        "5f4fd78d-a004-472a-82b5-0b04a6a88119"
+      ],
+      "cover": "http://109.173.167.138:3000/assets/189b4a42-6066-4afa-8d10-81417817cb76.jpg"
+    },
+
+    "189b4a42-6066-4afa-8d10-81417817cb75": {
+      "name": "Oncle Jazz",
+      "descriptions": [
+        "It was originally released in late 1969 under his birth name, Scott Engel, and failed to chart. Subsequent reissues have been released under his stage name. It has since received praise as one of Walker's best works.",
+        "Scott 4 was the first Walker album to consist solely of self-penned songs. The preceding Scott, Scott 2 and Scott 3 albums had each featured a mixture of originals and covers, including several translations of Jacques Brel songs, which were later collected to form the album Scott Walker Sings Jacques Brel. Scott 4 also features slightly less ornate orchestral arrangements, opting instead for a more skeletal sound with greater emphasis on the rhythm section."
+      ],
+      "releaseDate": 2019,
+      "artist": "30259615-073e-4513-9646-de214d684c90",
+      "songs": ["be0eb5b6-244f-4de8-afae-ed7fb62e0de2"],
+      "cover": "http://109.173.167.138:3000/assets/189b4a42-6066-4afa-8d10-81417817cb75.jpg"
+    },
+    "e9ca557e-07bd-483a-ad23-e89529880145": {
+      "name": "Wandering",
+      "descriptions": [
+        "It was originally released in late 1969 under his birth name, Scott Engel, and failed to chart. Subsequent reissues have been released under his stage name. It has since received praise as one of Walker's best works.",
+        "Scott 4 was the first Walker album to consist solely of self-penned songs. The preceding Scott, Scott 2 and Scott 3 albums had each featured a mixture of originals and covers, including several translations of Jacques Brel songs, which were later collected to form the album Scott Walker Sings Jacques Brel. Scott 4 also features slightly less ornate orchestral arrangements, opting instead for a more skeletal sound with greater emphasis on the rhythm section."
+      ],
+      "releaseDate": 1975,
+      "artist": "7c2415bc-28c3-40cf-9e44-50b6d0c3bbc6",
+      "songs": ["be0eb5b6-244f-4de8-afae-ed7fb62e0de2"],
+      "cover": "http://109.173.167.138:3000/assets/e9ca557e-07bd-483a-ad23-e89529880145.jpg"
+    }
+  },
+  "songs": {
+    "be0eb5b6-244f-4de8-afae-ed7fb62e0de2": {
+      "name": "The World's Strongest Man",
+      "lyrics": [
+        "As the morning turned my way\nSea birds flyin' through its hazy face\nAnd I came back here, to replace your place\nIn my life"
+      ]
+    },
+    "4130c822-cfc8-4586-a5e4-80f8348ff4d4": {
+      "name": "Łańcuch I: Kiosk",
+      "lyrics": [
+        "Oni są niemili, bo to...</br>Ja jestem niemiły, bo to...</br>Ty jesteś niemiła, bo to... łańcuch</br>Potem społeczeństwo jest niemiłe, bo to... łańcuch",
+        "Młodzieniec staje przy kiosku<br/>Kiosk był sytuowany przy dworcu<br/>Graffiti blade na słońcu pokrywa zgniło zielonkawy korpus<br/>Opowiem Panom, Paniom, Państwu<br/>O tym jak zacząć zdarzeń łańcuch<br/>Czy to w Warszawie, Wrocławiu czy Gdańsku<br/>Efekt motyla w wartkim tańcu<br/>(Ma pan dziś może) Odpowiedź: nie mam<br/>Kioskarz ma dosyć tego pokolenia<br/>W starej robocie miał złe doświadczenia<br/>Student odchodzi bo czeka robota w podziemiach<br/>Z samego rana ta potwarz<br/>Czemu mnie rzucił na ołtarz kioskarz?<br/>Oh, ta podła Polska, drżyjcie klienci sieciówki Oskar<br/>Minute po drugiеj rozjuszony student uzupełnia butle z kеtchupem<br/>Nagle przeklęta klientka zaczyna go nękać - czy w tej bułeczce jest gluten?<br/>Na nim ten szelmowski uśmiech, taki co ucho lubi łączyć z uchem<br/>Świdruje wzrokiem mówiąc jej wprost, że raczej sałatkę by radził z tym brzuchem<br/>Ona odchodzi z przytupem, Karma Police, OK Computer nucąc<br/>Nagle ochota na wódę, wkrótce pod Carrefoura podjeżdza Uber<br/>Trzy i pół gwiazdki? Ale był blisko, trochę jej wstyd, że popija czystą<br/>I chociaż twierdzi, że nie jest rasistką, nie ufa tym Saszom, nie ufa Dimitrom",
+        "Patrz mi w twarz, jest jak kamień<br/>Dla ciebie coś znaczyć, nie znaczy nic dla mnie<br/>Czuję wstręt, znów cię ranię<br/>Nienawiść jest ślepa - tak już zostanie"
+      ]
+    },
+    "5f4fd78d-a004-472a-82b5-0b04a6a88119": {
+      "name": "Panie, to Wyjście!",
+      "lyrics": [
+        "As the morning turned my way\nSea birds flyin' through its hazy face\nAnd I came back here, to replace your place\nIn my life"
+      ]
+    }
+  },
+  "artists": {
+    "ace7232a-7612-4dfc-a7e4-fff8d0d71eb4": {
+      "name": "Scott Walker",
+      "descriptions": [
+        "Was an American-born British singer-songwriter, composer and record producer. Walker was known for his baritone voice and an unorthodox career path which took him from 1960s teen pop icon to 21st-century avant-garde musician. Walker's success was largely in the United Kingdom, where his first four solo albums reached the top ten. He lived in the UK from 1965 and became a UK citizen in 1970."
+      ],
+      "portrait": "http://109.173.167.138:3000/assets/ace7232a-7612-4dfc-a7e4-fff8d0d71eb4.jpg",
+      "lifespan": [-851389200000, 1553209200000]
+    },
+    "7c2415bc-28c3-40cf-9e44-50b6d0c3bbc6": {
+      "name": "Hako Yamasaki",
+      "descriptions": [
+        "Was an American-born British singer-songwriter, composer and record producer. Walker was known for his baritone voice and an unorthodox career path which took him from 1960s teen pop icon to 21st-century avant-garde musician. Walker's success was largely in the United Kingdom, where his first four solo albums reached the top ten. He lived in the UK from 1965 and became a UK citizen in 1970."
+      ],
+      "portrait": "http://109.173.167.138:3000/assets/7c2415bc-28c3-40cf-9e44-50b6d0c3bbc6.jpg",
+      "lifespan": [-398394000000]
+    },
+    "19e19dec-bb3c-439d-aa3d-2cee1c1ebd3f": {
+      "name": "Taco Hemingway",
+      "descriptions": [
+        "Is a Polish rapper, songwriter, and musician who has worked solo and as a part of the duo Taconafide together with the rapper Quebonafide."
+      ],
+      "portrait": "http://109.173.167.138:3000/assets/19e19dec-bb3c-439d-aa3d-2cee1c1ebd3f.jpg",
+      "lifespan": [649202400000]
+    },
+    "30259615-073e-4513-9646-de214d684c90": {
+      "name": "Men I Trust",
+      "descriptions": [
+        "is a Canadian indie pop band from Montreal, Quebec. Formed in 2014, the band consists of bassist Jessy Caron, multi-instrumentalist and producer Dragos Chiriac, and lead vocalist and guitarist Emma Proulx. The group self-released its early work and subsequently has released music on Canadian indie label Return To Analog."
+      ],
+      "portrait": "http://109.173.167.138:3000/assets/30259615-073e-4513-9646-de214d684c90.jpg",
+      "lifespan": [1388534400000]
+    },
+    "dded8ae6-09ce-4be2-bae5-27d3c34b70ff": {
+      "name": "Zbigniew Wodecki",
+      "descriptions": [
+        "is a Canadian indie pop band from Montreal, Quebec. Formed in 2014, the band consists of bassist Jessy Caron, multi-instrumentalist and producer Dragos Chiriac, and lead vocalist and guitarist Emma Proulx. The group self-released its early work and subsequently has released music on Canadian indie label Return To Analog."
+      ],
+      "portrait": "http://109.173.167.138:3000/assets/dded8ae6-09ce-4be2-bae5-27d3c34b70ff.jpg",
+      "lifespan": [1388534400000]
+    }
+  }
+}

@@ -1,135 +1,149 @@
 <template>
-  <div id="app">
-    <Sidebar @sidebar-change="setShowSidebar($event)"> 
-    </Sidebar>
-    <transition 
-      :name="this.transitionName"
-      @enter="closeSidebar">    
-        <router-view> </router-view>
+  <div id="app" :style="{ '--vh': vh }">
+    <v-header
+      @router-return="goToPreviousPage"
+      @show-menu="showMenu = $event"
+      :returnButton="!!previousPage && !showMenu"
+      :menuButton="showMenu"
+    />
+    <transition name="slide">
+      <v-menu v-if="showMenu" @router="[goToPage($event), (showMenu = false)]"/>
+    </transition>
+    <transition :name="transitionName" mode="out-in">
+      <router-view
+        @router="goToPage($event)"
+        @previous-page="previousPage = $event"
+      >
+      </router-view>
     </transition>
   </div>
 </template>
 
 <script>
-import Sidebar from '@/components/Sidebar.vue'
-import { store, mutations } from '@/store.js'
+import TheHeader from "./components/header/TheHeader.vue";
+import TheMenu from "./components/menu/TheMenu.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    Sidebar,
+    "v-menu": TheMenu,
+    "v-header": TheHeader,
   },
-  data () {
+  data() {
     return {
-      showSidebar: false,
-    }
+      showMenu: false,
+      transitionName: "slide-top",
+      vh: "0px",
+      previousPage: undefined,
+    };
+  },
+  mounted() {
+    this.setProperHeight();
+    addEventListener("resize", this.setProperHeight.bind(this));
   },
   methods: {
     setShowSidebar(event) {
       this.showSidebar = event;
     },
-    closeSidebar: mutations.closeNav, 
-    toggleSidebarPanel: mutations.toggleNav,
+    async goToPreviousPage() {
+      this.transitionName = "slide-bottom";
+      try {
+        await this.$router.push(this.previousPage);
+      } catch (e) {
+        e;
+      }
+    },
+    async goToPage(event) {
+      this.transitionName = "slide-top";
+      try {
+        await this.$router.push(event);
+      } catch (e) {
+        e;
+      }
+    },
+    setProperHeight() {
+      this.vh = `${window.innerHeight * 0.01}px`;
+    },
   },
-  computed: {
-    transitionName() {
-      return this.showSidebar ? "sidebar-anim" : "router-anim";
-    },
-    isPanelOpen() {
-      return store.isNavOpen;
-    },
-  }
-}
+  beforeDestroy() {
+    removeEventListener("resize", this.setProperHeight);
+  },
+};
 </script>
 
-<style>
-@import url('https://fonts.googleapis.com/css?family=Heebo:300,400,500,700&display=swap');
-
-@font-face {
-  font-family: 'PTSerif';
-  src: url('./assets/PTSerif-Regular.ttf');
-}
-
-#app {
-  font-family: 'Avenir', Helvetica, Arial, 'LibreBaskeville', 'LibreBaskeville-Bold';
-  font-family: 'PT Serif', serif;
-  font-family: 'Raleway', sans-serif;
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  
-  /* min-height: 100vh;
-  min-width: 100vw; */
-
-  color: white;
-  /* padding-top: 5vh; */
-}
+<style lang="scss">
+@import "@/scss/styles";
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap");
 
 body {
   margin: unset;
   background-color: black;
-
 }
 
-/* SLIDE UP */
-.router-anim-enter-active{
-  animation: up .75s;
-  transition: all ease;
+#app {
+  font-family: "Raleway", sans-serif;
+  color: white;
+  width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+  max-width: 480px;
+  margin: auto;
+  @include device-height();
 }
 
-.router-anim-leave-active{
-  animation: down .75s;
-  transition: all ease;
+svg {
+  fill: white;
 }
 
-@keyframes down {
-  from {
-    margin-top: 0vh;
-  }
-  to{
-    margin-top: -100vh;
-  }
+::-webkit-scrollbar {
+    display: none;
 }
 
-@keyframes up {
-  from {
-    margin-bottom: 100vh;
-  }
-  to{
-    margin-bottom: 0vh;
-  }
+button {
+  margin: 0;
+  padding: 0;
+  display: block;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: unset;
+  outline: none;
+  border: none;
 }
 
-/* sidebar animations */
-/* tutaj jest do zmiany na enter/leave-active, ale ze względu na to że nie chcę marnować więcej czasu jest niedopracowane. View, do którego przechodzimy,
-nie wchodzi jednocześnie z wychodzeniem sidebara */
-.sidebar-anim-enter{
-    animation: sid-right .5s;
-    transition: all ease;
+.slide-top-enter-active,
+.slide-top-leave-active,
+.slide-bottom-enter-active,
+.slide-bottom-leave-active {
+  transition-duration: 0.5s;
+  transition-property: height, opacity, transform;
+  transition-timing-function: ease-in-out;
 }
 
-.sidebar-anim-leave{
-    animation: sid-left .5s;
-    transition: all ease;
+.slide-top-enter,
+.slide-bottom-leave-active {
+  opacity: 0;
+  transform: translateY(#{$animation-margin});
 }
 
-
-@keyframes sid-right {
-    from {
-        margin-left: -100vw;
-    }
-    to {
-        margin-right: 0;
-    }
+.slide-top-leave-active,
+.slide-bottom-enter {
+  opacity: 0;
+  transform: translateY(-#{$animation-margin});
 }
 
-@keyframes sid-left {
-    from {
-    margin-right: -100vw;
-  }
-  to{
-    margin-left: -100vw;
-  }
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform ease-in-out 0.5s;
+  transform: translateX(0%);
 }
 
+.slide-leave-to {
+  transform: translateX(-100%);
+}
+
+.slide-enter {
+  transform: translateX(-100%);
+}
 </style>
